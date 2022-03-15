@@ -1,0 +1,932 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6259BDB427DF9395008A8CA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259BDB327DF9395008A8CA6 /* AppDelegate.swift */; };
+		6259BDB627DF9395008A8CA6 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259BDB527DF9395008A8CA6 /* GameViewController.swift */; };
+		6259BDB927DF9395008A8CA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6259BDB727DF9395008A8CA6 /* Main.storyboard */; };
+		6259BDBC27DF9395008A8CA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6259BDBA27DF9395008A8CA6 /* LaunchScreen.storyboard */; };
+		6259BDC127DF9395008A8CA6 /* BattleCode.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6259BDC027DF9395008A8CA6 /* BattleCode.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6259BDC727DF9395008A8CA6 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6259BDC527DF9395008A8CA6 /* Interface.storyboard */; };
+		6259BDCE27DF9395008A8CA6 /* BattleCode Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6259BDCD27DF9395008A8CA6 /* BattleCode Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6259BDD327DF9395008A8CA6 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259BDD227DF9395008A8CA6 /* InterfaceController.swift */; };
+		6259BDD527DF9395008A8CA6 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259BDD427DF9395008A8CA6 /* ExtensionDelegate.swift */; };
+		6259BDDE27DF9395008A8CA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259BDDD27DF9395008A8CA6 /* AppDelegate.swift */; };
+		6259BDE027DF9395008A8CA6 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259BDDF27DF9395008A8CA6 /* GameViewController.swift */; };
+		6259BDE327DF9395008A8CA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6259BDE127DF9395008A8CA6 /* Main.storyboard */; };
+		6259BDE627DF9395008A8CA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6259BDE427DF9395008A8CA6 /* LaunchScreen.storyboard */; };
+		6259BDEF27DF9395008A8CA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259BDEE27DF9395008A8CA6 /* AppDelegate.swift */; };
+		6259BDF127DF9395008A8CA6 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259BDF027DF9395008A8CA6 /* GameViewController.swift */; };
+		6259BDF427DF9395008A8CA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6259BDF227DF9395008A8CA6 /* Main.storyboard */; };
+		6259BDF727DF9395008A8CA6 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6259BDA827DF9391008A8CA6 /* Actions.sks */; };
+		6259BDF827DF9395008A8CA6 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6259BDA827DF9391008A8CA6 /* Actions.sks */; };
+		6259BDF927DF9395008A8CA6 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6259BDA827DF9391008A8CA6 /* Actions.sks */; };
+		6259BDFA27DF9395008A8CA6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6259BDA927DF9391008A8CA6 /* GameScene.sks */; };
+		6259BDFB27DF9395008A8CA6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6259BDA927DF9391008A8CA6 /* GameScene.sks */; };
+		6259BDFC27DF9395008A8CA6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6259BDA927DF9391008A8CA6 /* GameScene.sks */; };
+		6259BDFD27DF9395008A8CA6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6259BDA927DF9391008A8CA6 /* GameScene.sks */; };
+		6259BDFE27DF9395008A8CA6 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259BDAA27DF9391008A8CA6 /* GameScene.swift */; };
+		6259BDFF27DF9395008A8CA6 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259BDAA27DF9391008A8CA6 /* GameScene.swift */; };
+		6259BE0027DF9395008A8CA6 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259BDAA27DF9391008A8CA6 /* GameScene.swift */; };
+		6259BE0127DF9395008A8CA6 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259BDAA27DF9391008A8CA6 /* GameScene.swift */; };
+		6259BE0227DF9395008A8CA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6259BDAB27DF9395008A8CA6 /* Assets.xcassets */; };
+		6259BE0327DF9395008A8CA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6259BDAB27DF9395008A8CA6 /* Assets.xcassets */; };
+		6259BE0427DF9395008A8CA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6259BDAB27DF9395008A8CA6 /* Assets.xcassets */; };
+		6259BE0527DF9395008A8CA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6259BDAB27DF9395008A8CA6 /* Assets.xcassets */; };
+		6259BE2B27DFACE6008A8CA6 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259BE2A27DFACE6008A8CA6 /* StartViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6259BDC227DF9395008A8CA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6259BDA327DF9390008A8CA6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6259BDBF27DF9395008A8CA6;
+			remoteInfo = "BattleCode watchOS App";
+		};
+		6259BDCF27DF9395008A8CA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6259BDA327DF9390008A8CA6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6259BDCC27DF9395008A8CA6;
+			remoteInfo = "BattleCode watchOS App Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6259BE0B27DF9395008A8CA6 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6259BDCE27DF9395008A8CA6 /* BattleCode Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6259BE0F27DF9395008A8CA6 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				6259BDC127DF9395008A8CA6 /* BattleCode.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		6259BDA827DF9391008A8CA6 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		6259BDA927DF9391008A8CA6 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		6259BDAA27DF9391008A8CA6 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		6259BDAB27DF9395008A8CA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6259BDB027DF9395008A8CA6 /* BattleCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BattleCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6259BDB327DF9395008A8CA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6259BDB527DF9395008A8CA6 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		6259BDB827DF9395008A8CA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6259BDBB27DF9395008A8CA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6259BDBD27DF9395008A8CA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6259BDC027DF9395008A8CA6 /* BattleCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BattleCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6259BDC627DF9395008A8CA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		6259BDC827DF9395008A8CA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6259BDCD27DF9395008A8CA6 /* BattleCode Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "BattleCode Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6259BDD227DF9395008A8CA6 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		6259BDD427DF9395008A8CA6 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		6259BDD627DF9395008A8CA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6259BDDB27DF9395008A8CA6 /* BattleCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BattleCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6259BDDD27DF9395008A8CA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6259BDDF27DF9395008A8CA6 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		6259BDE227DF9395008A8CA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6259BDE527DF9395008A8CA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6259BDE727DF9395008A8CA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6259BDEC27DF9395008A8CA6 /* BattleCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BattleCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6259BDEE27DF9395008A8CA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6259BDF027DF9395008A8CA6 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		6259BDF327DF9395008A8CA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6259BDF527DF9395008A8CA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6259BDF627DF9395008A8CA6 /* BattleCode_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BattleCode_macOS.entitlements; sourceTree = "<group>"; };
+		6259BE2A27DFACE6008A8CA6 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6259BDAD27DF9395008A8CA6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6259BDCA27DF9395008A8CA6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6259BDD827DF9395008A8CA6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6259BDE927DF9395008A8CA6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6259BDA227DF9390008A8CA6 = {
+			isa = PBXGroup;
+			children = (
+				6259BDA727DF9390008A8CA6 /* BattleCode Shared */,
+				6259BDB227DF9395008A8CA6 /* BattleCode iOS */,
+				6259BDC427DF9395008A8CA6 /* BattleCode watchOS App */,
+				6259BDD127DF9395008A8CA6 /* BattleCode watchOS App Extension */,
+				6259BDDC27DF9395008A8CA6 /* BattleCode tvOS */,
+				6259BDED27DF9395008A8CA6 /* BattleCode macOS */,
+				6259BDB127DF9395008A8CA6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6259BDA727DF9390008A8CA6 /* BattleCode Shared */ = {
+			isa = PBXGroup;
+			children = (
+				6259BDA827DF9391008A8CA6 /* Actions.sks */,
+				6259BDA927DF9391008A8CA6 /* GameScene.sks */,
+				6259BDAA27DF9391008A8CA6 /* GameScene.swift */,
+				6259BDAB27DF9395008A8CA6 /* Assets.xcassets */,
+			);
+			path = "BattleCode Shared";
+			sourceTree = "<group>";
+		};
+		6259BDB127DF9395008A8CA6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6259BDB027DF9395008A8CA6 /* BattleCode.app */,
+				6259BDC027DF9395008A8CA6 /* BattleCode.app */,
+				6259BDCD27DF9395008A8CA6 /* BattleCode Extension.appex */,
+				6259BDDB27DF9395008A8CA6 /* BattleCode.app */,
+				6259BDEC27DF9395008A8CA6 /* BattleCode.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6259BDB227DF9395008A8CA6 /* BattleCode iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6259BDB327DF9395008A8CA6 /* AppDelegate.swift */,
+				6259BDB527DF9395008A8CA6 /* GameViewController.swift */,
+				6259BDB727DF9395008A8CA6 /* Main.storyboard */,
+				6259BDBA27DF9395008A8CA6 /* LaunchScreen.storyboard */,
+				6259BDBD27DF9395008A8CA6 /* Info.plist */,
+				6259BE2A27DFACE6008A8CA6 /* StartViewController.swift */,
+			);
+			path = "BattleCode iOS";
+			sourceTree = "<group>";
+		};
+		6259BDC427DF9395008A8CA6 /* BattleCode watchOS App */ = {
+			isa = PBXGroup;
+			children = (
+				6259BDC527DF9395008A8CA6 /* Interface.storyboard */,
+				6259BDC827DF9395008A8CA6 /* Info.plist */,
+			);
+			path = "BattleCode watchOS App";
+			sourceTree = "<group>";
+		};
+		6259BDD127DF9395008A8CA6 /* BattleCode watchOS App Extension */ = {
+			isa = PBXGroup;
+			children = (
+				6259BDD227DF9395008A8CA6 /* InterfaceController.swift */,
+				6259BDD427DF9395008A8CA6 /* ExtensionDelegate.swift */,
+				6259BDD627DF9395008A8CA6 /* Info.plist */,
+			);
+			path = "BattleCode watchOS App Extension";
+			sourceTree = "<group>";
+		};
+		6259BDDC27DF9395008A8CA6 /* BattleCode tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				6259BDDD27DF9395008A8CA6 /* AppDelegate.swift */,
+				6259BDDF27DF9395008A8CA6 /* GameViewController.swift */,
+				6259BDE127DF9395008A8CA6 /* Main.storyboard */,
+				6259BDE427DF9395008A8CA6 /* LaunchScreen.storyboard */,
+				6259BDE727DF9395008A8CA6 /* Info.plist */,
+			);
+			path = "BattleCode tvOS";
+			sourceTree = "<group>";
+		};
+		6259BDED27DF9395008A8CA6 /* BattleCode macOS */ = {
+			isa = PBXGroup;
+			children = (
+				6259BDEE27DF9395008A8CA6 /* AppDelegate.swift */,
+				6259BDF027DF9395008A8CA6 /* GameViewController.swift */,
+				6259BDF227DF9395008A8CA6 /* Main.storyboard */,
+				6259BDF527DF9395008A8CA6 /* Info.plist */,
+				6259BDF627DF9395008A8CA6 /* BattleCode_macOS.entitlements */,
+			);
+			path = "BattleCode macOS";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6259BDAF27DF9395008A8CA6 /* BattleCode iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6259BE1027DF9395008A8CA6 /* Build configuration list for PBXNativeTarget "BattleCode iOS" */;
+			buildPhases = (
+				6259BDAC27DF9395008A8CA6 /* Sources */,
+				6259BDAD27DF9395008A8CA6 /* Frameworks */,
+				6259BDAE27DF9395008A8CA6 /* Resources */,
+				6259BE0F27DF9395008A8CA6 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6259BDC327DF9395008A8CA6 /* PBXTargetDependency */,
+			);
+			name = "BattleCode iOS";
+			productName = "BattleCode iOS";
+			productReference = 6259BDB027DF9395008A8CA6 /* BattleCode.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6259BDBF27DF9395008A8CA6 /* BattleCode watchOS App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6259BE0C27DF9395008A8CA6 /* Build configuration list for PBXNativeTarget "BattleCode watchOS App" */;
+			buildPhases = (
+				6259BDBE27DF9395008A8CA6 /* Resources */,
+				6259BE0B27DF9395008A8CA6 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6259BDD027DF9395008A8CA6 /* PBXTargetDependency */,
+			);
+			name = "BattleCode watchOS App";
+			productName = "BattleCode watchOS App";
+			productReference = 6259BDC027DF9395008A8CA6 /* BattleCode.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		6259BDCC27DF9395008A8CA6 /* BattleCode watchOS App Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6259BE0827DF9395008A8CA6 /* Build configuration list for PBXNativeTarget "BattleCode watchOS App Extension" */;
+			buildPhases = (
+				6259BDC927DF9395008A8CA6 /* Sources */,
+				6259BDCA27DF9395008A8CA6 /* Frameworks */,
+				6259BDCB27DF9395008A8CA6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BattleCode watchOS App Extension";
+			productName = "BattleCode watchOS App Extension";
+			productReference = 6259BDCD27DF9395008A8CA6 /* BattleCode Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+		6259BDDA27DF9395008A8CA6 /* BattleCode tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6259BE1327DF9395008A8CA6 /* Build configuration list for PBXNativeTarget "BattleCode tvOS" */;
+			buildPhases = (
+				6259BDD727DF9395008A8CA6 /* Sources */,
+				6259BDD827DF9395008A8CA6 /* Frameworks */,
+				6259BDD927DF9395008A8CA6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BattleCode tvOS";
+			productName = "BattleCode tvOS";
+			productReference = 6259BDDB27DF9395008A8CA6 /* BattleCode.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6259BDEB27DF9395008A8CA6 /* BattleCode macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6259BE1627DF9395008A8CA6 /* Build configuration list for PBXNativeTarget "BattleCode macOS" */;
+			buildPhases = (
+				6259BDE827DF9395008A8CA6 /* Sources */,
+				6259BDE927DF9395008A8CA6 /* Frameworks */,
+				6259BDEA27DF9395008A8CA6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BattleCode macOS";
+			productName = "BattleCode macOS";
+			productReference = 6259BDEC27DF9395008A8CA6 /* BattleCode.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6259BDA327DF9390008A8CA6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					6259BDAF27DF9395008A8CA6 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					6259BDBF27DF9395008A8CA6 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					6259BDCC27DF9395008A8CA6 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					6259BDDA27DF9395008A8CA6 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					6259BDEB27DF9395008A8CA6 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+				};
+			};
+			buildConfigurationList = 6259BDA627DF9390008A8CA6 /* Build configuration list for PBXProject "BattleCode" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6259BDA227DF9390008A8CA6;
+			productRefGroup = 6259BDB127DF9395008A8CA6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6259BDAF27DF9395008A8CA6 /* BattleCode iOS */,
+				6259BDBF27DF9395008A8CA6 /* BattleCode watchOS App */,
+				6259BDCC27DF9395008A8CA6 /* BattleCode watchOS App Extension */,
+				6259BDDA27DF9395008A8CA6 /* BattleCode tvOS */,
+				6259BDEB27DF9395008A8CA6 /* BattleCode macOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6259BDAE27DF9395008A8CA6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6259BDFA27DF9395008A8CA6 /* GameScene.sks in Resources */,
+				6259BDB927DF9395008A8CA6 /* Main.storyboard in Resources */,
+				6259BDF727DF9395008A8CA6 /* Actions.sks in Resources */,
+				6259BDBC27DF9395008A8CA6 /* LaunchScreen.storyboard in Resources */,
+				6259BE0227DF9395008A8CA6 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6259BDBE27DF9395008A8CA6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6259BE0327DF9395008A8CA6 /* Assets.xcassets in Resources */,
+				6259BDC727DF9395008A8CA6 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6259BDCB27DF9395008A8CA6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6259BDFB27DF9395008A8CA6 /* GameScene.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6259BDD927DF9395008A8CA6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6259BDFC27DF9395008A8CA6 /* GameScene.sks in Resources */,
+				6259BDE327DF9395008A8CA6 /* Main.storyboard in Resources */,
+				6259BDF827DF9395008A8CA6 /* Actions.sks in Resources */,
+				6259BDE627DF9395008A8CA6 /* LaunchScreen.storyboard in Resources */,
+				6259BE0427DF9395008A8CA6 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6259BDEA27DF9395008A8CA6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6259BDF427DF9395008A8CA6 /* Main.storyboard in Resources */,
+				6259BDFD27DF9395008A8CA6 /* GameScene.sks in Resources */,
+				6259BE0527DF9395008A8CA6 /* Assets.xcassets in Resources */,
+				6259BDF927DF9395008A8CA6 /* Actions.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6259BDAC27DF9395008A8CA6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6259BDFE27DF9395008A8CA6 /* GameScene.swift in Sources */,
+				6259BE2B27DFACE6008A8CA6 /* StartViewController.swift in Sources */,
+				6259BDB627DF9395008A8CA6 /* GameViewController.swift in Sources */,
+				6259BDB427DF9395008A8CA6 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6259BDC927DF9395008A8CA6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6259BDFF27DF9395008A8CA6 /* GameScene.swift in Sources */,
+				6259BDD527DF9395008A8CA6 /* ExtensionDelegate.swift in Sources */,
+				6259BDD327DF9395008A8CA6 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6259BDD727DF9395008A8CA6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6259BE0027DF9395008A8CA6 /* GameScene.swift in Sources */,
+				6259BDE027DF9395008A8CA6 /* GameViewController.swift in Sources */,
+				6259BDDE27DF9395008A8CA6 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6259BDE827DF9395008A8CA6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6259BE0127DF9395008A8CA6 /* GameScene.swift in Sources */,
+				6259BDF127DF9395008A8CA6 /* GameViewController.swift in Sources */,
+				6259BDEF27DF9395008A8CA6 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6259BDC327DF9395008A8CA6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6259BDBF27DF9395008A8CA6 /* BattleCode watchOS App */;
+			targetProxy = 6259BDC227DF9395008A8CA6 /* PBXContainerItemProxy */;
+		};
+		6259BDD027DF9395008A8CA6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6259BDCC27DF9395008A8CA6 /* BattleCode watchOS App Extension */;
+			targetProxy = 6259BDCF27DF9395008A8CA6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6259BDB727DF9395008A8CA6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6259BDB827DF9395008A8CA6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6259BDBA27DF9395008A8CA6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6259BDBB27DF9395008A8CA6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		6259BDC527DF9395008A8CA6 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6259BDC627DF9395008A8CA6 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+		6259BDE127DF9395008A8CA6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6259BDE227DF9395008A8CA6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6259BDE427DF9395008A8CA6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6259BDE527DF9395008A8CA6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		6259BDF227DF9395008A8CA6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6259BDF327DF9395008A8CA6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6259BE0627DF9395008A8CA6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6259BE0727DF9395008A8CA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		6259BE0927DF9395008A8CA6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D3GPAVWYTJ;
+				INFOPLIST_FILE = "BattleCode watchOS App Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Matts.BattleCode.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "BattleCode Extension";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+			};
+			name = Debug;
+		};
+		6259BE0A27DF9395008A8CA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D3GPAVWYTJ;
+				INFOPLIST_FILE = "BattleCode watchOS App Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Matts.BattleCode.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "BattleCode Extension";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+			};
+			name = Release;
+		};
+		6259BE0D27DF9395008A8CA6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D3GPAVWYTJ;
+				IBSC_MODULE = BattleCode_Extension;
+				INFOPLIST_FILE = "BattleCode watchOS App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = Matts.BattleCode.watchkitapp;
+				PRODUCT_NAME = BattleCode;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+			};
+			name = Debug;
+		};
+		6259BE0E27DF9395008A8CA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D3GPAVWYTJ;
+				IBSC_MODULE = BattleCode_Extension;
+				INFOPLIST_FILE = "BattleCode watchOS App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = Matts.BattleCode.watchkitapp;
+				PRODUCT_NAME = BattleCode;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+			};
+			name = Release;
+		};
+		6259BE1127DF9395008A8CA6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D3GPAVWYTJ;
+				INFOPLIST_FILE = "BattleCode iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Matts.BattleCode;
+				PRODUCT_NAME = BattleCode;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6259BE1227DF9395008A8CA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D3GPAVWYTJ;
+				INFOPLIST_FILE = "BattleCode iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Matts.BattleCode;
+				PRODUCT_NAME = BattleCode;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6259BE1427DF9395008A8CA6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D3GPAVWYTJ;
+				INFOPLIST_FILE = "BattleCode tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Matts.BattleCode;
+				PRODUCT_NAME = BattleCode;
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 14.3;
+			};
+			name = Debug;
+		};
+		6259BE1527DF9395008A8CA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D3GPAVWYTJ;
+				INFOPLIST_FILE = "BattleCode tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Matts.BattleCode;
+				PRODUCT_NAME = BattleCode;
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 14.3;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6259BE1727DF9395008A8CA6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "BattleCode macOS/BattleCode_macOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = D3GPAVWYTJ;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "BattleCode macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = Matts.BattleCode;
+				PRODUCT_NAME = BattleCode;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		6259BE1827DF9395008A8CA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "BattleCode macOS/BattleCode_macOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = D3GPAVWYTJ;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "BattleCode macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = Matts.BattleCode;
+				PRODUCT_NAME = BattleCode;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6259BDA627DF9390008A8CA6 /* Build configuration list for PBXProject "BattleCode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6259BE0627DF9395008A8CA6 /* Debug */,
+				6259BE0727DF9395008A8CA6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6259BE0827DF9395008A8CA6 /* Build configuration list for PBXNativeTarget "BattleCode watchOS App Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6259BE0927DF9395008A8CA6 /* Debug */,
+				6259BE0A27DF9395008A8CA6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6259BE0C27DF9395008A8CA6 /* Build configuration list for PBXNativeTarget "BattleCode watchOS App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6259BE0D27DF9395008A8CA6 /* Debug */,
+				6259BE0E27DF9395008A8CA6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6259BE1027DF9395008A8CA6 /* Build configuration list for PBXNativeTarget "BattleCode iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6259BE1127DF9395008A8CA6 /* Debug */,
+				6259BE1227DF9395008A8CA6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6259BE1327DF9395008A8CA6 /* Build configuration list for PBXNativeTarget "BattleCode tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6259BE1427DF9395008A8CA6 /* Debug */,
+				6259BE1527DF9395008A8CA6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6259BE1627DF9395008A8CA6 /* Build configuration list for PBXNativeTarget "BattleCode macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6259BE1727DF9395008A8CA6 /* Debug */,
+				6259BE1827DF9395008A8CA6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6259BDA327DF9390008A8CA6 /* Project object */;
+}
