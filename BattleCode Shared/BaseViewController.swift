@@ -33,7 +33,7 @@ class BaseViewController: UIViewController {
             UIView.animate(
                 withDuration: 1.0,
                 delay: TimeInterval(delay),
-                options: UIView.AnimationOptions.curveEaseInOut,
+                options: UIView.AnimationOptions.curveEaseIn,
                 animations: { label.alpha = 1.0 },
                 completion: {
                     _ in UIView.animate(

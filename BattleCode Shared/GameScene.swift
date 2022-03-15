@@ -9,13 +9,11 @@ import SpriteKit
 
 class GameScene: SKScene {
     
-    
     fileprivate var label : SKLabelNode?
     fileprivate var startButton : SKLabelNode?
 
     fileprivate var spinnyNode : SKShapeNode?
-
-    
+        
     class func newGameScene() -> GameScene {
         // Load 'GameScene.sks' as an SKScene.
         guard let scene = SKScene(fileNamed: "GameScene") as? GameScene else {
@@ -25,6 +23,9 @@ class GameScene: SKScene {
         
         // Set the scale mode to scale to fit the window
         scene.scaleMode = .aspectFill
+        let card = CardObj().card
+        card.name = "card1"
+        scene.addChild(card)
         
         return scene
     }
@@ -43,6 +44,7 @@ class GameScene: SKScene {
             startButton.run(SKAction.fadeIn(withDuration: 5.0))
         }
     }
+    
 }
         
 //        // Create shape node to use during mouse interaction

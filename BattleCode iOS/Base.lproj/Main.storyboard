@@ -42,7 +42,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="6QP-7G-5cs" kind="presentation" id="h3m-ff-yiT"/>
+                                    <segue destination="6QP-7G-5cs" kind="show" id="MVh-lz-Xjq"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -57,7 +57,9 @@
         <!--NewGameScreen-->
         <scene sceneID="Uy1-RI-H5M">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="NewGameStoryboard" storyboardName="NewGameScreen" id="6QP-7G-5cs" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="NewGameStoryboard" storyboardName="NewGameScreen" id="6QP-7G-5cs" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="KEO-WY-B2g"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cME-Ed-J3a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="93" y="139"/>
