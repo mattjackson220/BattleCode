@@ -70,7 +70,7 @@ class GameViewController: UIViewController {
                     let xScale = card.xScale
                     
                     var cardLabel = SKLabelNode()
-                    card.enumerateChildNodes(withName: "cardFront") { node, _ in
+                    card.enumerateChildNodes(withName: CardConstants.cardFrontName) { node, _ in
                         cardLabel = node as! SKLabelNode
                     }
                     
@@ -78,7 +78,7 @@ class GameViewController: UIViewController {
                         let narrow = SKAction.scaleX(to: 0, duration: 0.25)
                         let widen = SKAction.scaleX(to: 1.0, duration: 0.25)
                         let clearImage = SKAction.run({
-                            card.fillTexture = SKTexture.init(imageNamed:"whiteSquare")
+                            card.fillTexture = SKTexture.init(imageNamed: CardConstants.whiteImageName)
                             cardLabel.isHidden = false
                         })
                         let grow = SKAction.scale(to: 2.0, duration: 0.5)
@@ -88,7 +88,7 @@ class GameViewController: UIViewController {
                         let narrow = SKAction.scaleX(to: 0, duration: 0.25)
                         let widen = SKAction.scaleX(to: 1.0, duration: 0.25)
                         let addImage = SKAction.run({
-                            card.fillTexture = SKTexture.init(imageNamed:"backgroundImage")
+                            card.fillTexture = SKTexture.init(imageNamed: CardConstants.backgroundImageName)
                             cardLabel.isHidden = true
                         })
                         let shrink = SKAction.scale(to: 1.0, duration: 0.5)

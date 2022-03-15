@@ -21,7 +21,7 @@ public struct CardObj {
         card.fillColor = .white
         card.strokeColor = .black
         card.glowWidth = 0.5
-        card.fillTexture = SKTexture.init(imageNamed:"backgroundImage")
+        card.fillTexture = SKTexture.init(imageNamed: CardConstants.backgroundImageName)
         self.card = card
 //        let card = SKShapeNode()
 //        let path = CGMutablePath()
@@ -37,4 +37,10 @@ public struct CardObj {
 //        card.glowWidth = 0.5
 //        self.card = card
     }
+}
+
+public struct CardConstants {
+    static public let cardFrontName = "cardFront"
+    static public let backgroundImageName = "backgroundImage"
+    static public let whiteImageName = "whiteSquare"
 }
