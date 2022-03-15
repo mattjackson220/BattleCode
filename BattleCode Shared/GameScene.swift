@@ -6,6 +6,7 @@
 //
 
 import SpriteKit
+import UIKit
 
 class GameScene: SKScene {
     
@@ -26,27 +27,38 @@ class GameScene: SKScene {
         let card = CardObj().card
         card.name = "card1"
         scene.addChild(card)
-        
+        let cardLabel = SKLabelNode(fontNamed: "Chalkduster")
+        cardLabel.text = "You Win!"
+        cardLabel.name = "cardFront"
+        cardLabel.fontSize = 30
+        cardLabel.fontColor = SKColor.green
+        cardLabel.position = CGPoint(x: card.frame.midX, y: card.frame.midY)
+        cardLabel.isHidden = true
+        card.addChild(cardLabel)
+                
         return scene
     }
-    
-    func setUpScene() {
-        // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-        if let label = self.label {
-            label.alpha = 0.0
-            label.run(SKAction.fadeIn(withDuration: 2.0))
-        }
-        
-        self.startButton = self.childNode(withName: "//startButton") as? SKLabelNode
-        if let startButton = self.startButton {
-            startButton.alpha = 0.0
-            startButton.run(SKAction.fadeIn(withDuration: 5.0))
-        }
-    }
-    
 }
-        
+    
+    
+//
+//    func setUpScene() {
+//        // Get label node from scene and store it for use later
+//        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
+//        if let label = self.label {
+//            label.alpha = 0.0
+//            label.run(SKAction.fadeIn(withDuration: 2.0))
+//        }
+//
+//        self.startButton = self.childNode(withName: "//startButton") as? SKLabelNode
+//        if let startButton = self.startButton {
+//            startButton.alpha = 0.0
+//            startButton.run(SKAction.fadeIn(withDuration: 5.0))
+//        }
+//    }
+//
+//}
+//
 //        // Create shape node to use during mouse interaction
 //        let w = (self.size.width + self.size.height) * 0.05
 //        self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
