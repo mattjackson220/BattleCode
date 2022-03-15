@@ -21,6 +21,7 @@ public struct CardObj {
         card.fillColor = .white
         card.strokeColor = .black
         card.glowWidth = 0.5
+        card.fillTexture = SKTexture.init(imageNamed:"backgroundImage")
         self.card = card
 //        let card = SKShapeNode()
 //        let path = CGMutablePath()

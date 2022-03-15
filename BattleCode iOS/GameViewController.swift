@@ -66,12 +66,28 @@ class GameViewController: UIViewController {
             if let p = (node as! SKShapeNode).path {
                 if p.contains(touchPosition) {
                     let card = node as! SKShapeNode
+                    
                     let xScale = card.xScale
-                    let narrow = SKAction.scaleX(to: 0, duration: 0.25)
-                    let widen = SKAction.scaleX(to: xScale, duration: 0.25)
-                    let grow = SKAction.scale(to: 2.0, duration: 0.5)
-                    let sequence = SKAction.sequence([narrow, widen, grow])
-                    card.run(sequence)
+                    
+                    if xScale == 1 {
+                        let narrow = SKAction.scaleX(to: 0, duration: 0.25)
+                        let widen = SKAction.scaleX(to: 1.0, duration: 0.25)
+                        let clearImage = SKAction.run({
+                            card.fillTexture = SKTexture.init(imageNamed:"whiteSquare")
+                        })
+                        let grow = SKAction.scale(to: 2.0, duration: 0.5)
+                        let sequence = SKAction.sequence([narrow, clearImage, widen, grow])
+                        card.run(sequence)
+                    } else {
+                        let narrow = SKAction.scaleX(to: 0, duration: 0.25)
+                        let widen = SKAction.scaleX(to: 1.0, duration: 0.25)
+                        let addImage = SKAction.run({
+                            card.fillTexture = SKTexture.init(imageNamed:"backgroundImage")
+                        })
+                        let shrink = SKAction.scale(to: 1.0, duration: 0.5)
+                        let sequence = SKAction.sequence([shrink, narrow, addImage, widen])
+                        card.run(sequence)
+                    }
                 }
             }
         }
