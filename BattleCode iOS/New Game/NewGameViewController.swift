@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewGameViewController: UIViewController {
+class NewGameViewController: BaseViewController {
     
     @IBOutlet weak var tutorialButton: UIButton!
     @IBOutlet weak var newGameButton: UIButton!
