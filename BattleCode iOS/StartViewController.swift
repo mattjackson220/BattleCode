@@ -14,8 +14,8 @@ class StartViewController: UIViewController {
         super.viewDidLoad()
         
         for _ in 0...500 {
-            let randomIntX = Int.random(in: 10..<Int(self.view.frame.size.height-200))
-            let randomIntY = Int.random(in: 50..<Int(self.view.frame.size.height-50))
+            let randomIntX = Int.random(in: 10..<Int(self.view.frame.size.width-10))
+            let randomIntY = Int.random(in: 10..<Int(self.view.frame.size.height-10))
 
             let label = UILabel(frame: CGRect(x: randomIntX, y: randomIntY, width: 200, height: 30))
             label.textColor = .green
@@ -27,8 +27,13 @@ class StartViewController: UIViewController {
 
             self.view.addSubview(label)
             self.view.sendSubviewToBack(label)
-            UIView.animate(withDuration: 1.0, delay: TimeInterval(Double.random(in: 0..<5)), options: UIView.AnimationOptions.curveEaseIn, animations: {
+            let delay = Double.random(in: 0..<5)
+            UIView.animate(withDuration: 1.0, delay: TimeInterval(delay), options: UIView.AnimationOptions.curveEaseInOut, animations: {
             label.alpha = 1.0
+            }, completion: {_ in
+            UIView.animate(withDuration: 1.0, delay: delay + 1.0, options: UIView.AnimationOptions.curveEaseOut, animations: {
+            label.alpha = 0.0
+            })
             })
         }
     }
