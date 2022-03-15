@@ -39,6 +39,8 @@
 		6259BE0427DF9395008A8CA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6259BDAB27DF9395008A8CA6 /* Assets.xcassets */; };
 		6259BE0527DF9395008A8CA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6259BDAB27DF9395008A8CA6 /* Assets.xcassets */; };
 		6259BE2B27DFACE6008A8CA6 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259BE2A27DFACE6008A8CA6 /* StartViewController.swift */; };
+		89FF137A27E0E2350043F059 /* NewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FF137827E0E2350043F059 /* NewGameViewController.swift */; };
+		89FF137B27E0E2350043F059 /* NewGameScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89FF137927E0E2350043F059 /* NewGameScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +116,8 @@
 		6259BDF527DF9395008A8CA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6259BDF627DF9395008A8CA6 /* BattleCode_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BattleCode_macOS.entitlements; sourceTree = "<group>"; };
 		6259BE2A27DFACE6008A8CA6 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		89FF137827E0E2350043F059 /* NewGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameViewController.swift; sourceTree = "<group>"; };
+		89FF137927E0E2350043F059 /* NewGameScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewGameScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +191,7 @@
 		6259BDB227DF9395008A8CA6 /* BattleCode iOS */ = {
 			isa = PBXGroup;
 			children = (
+				89FF137D27E0E2950043F059 /* New Game */,
 				6259BDB327DF9395008A8CA6 /* AppDelegate.swift */,
 				6259BDB527DF9395008A8CA6 /* GameViewController.swift */,
 				6259BDB727DF9395008A8CA6 /* Main.storyboard */,
@@ -238,6 +243,15 @@
 				6259BDF627DF9395008A8CA6 /* BattleCode_macOS.entitlements */,
 			);
 			path = "BattleCode macOS";
+			sourceTree = "<group>";
+		};
+		89FF137D27E0E2950043F059 /* New Game */ = {
+			isa = PBXGroup;
+			children = (
+				89FF137927E0E2350043F059 /* NewGameScreen.storyboard */,
+				89FF137827E0E2350043F059 /* NewGameViewController.swift */,
+			);
+			path = "New Game";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -388,6 +402,7 @@
 				6259BDF727DF9395008A8CA6 /* Actions.sks in Resources */,
 				6259BDBC27DF9395008A8CA6 /* LaunchScreen.storyboard in Resources */,
 				6259BE0227DF9395008A8CA6 /* Assets.xcassets in Resources */,
+				89FF137B27E0E2350043F059 /* NewGameScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +455,7 @@
 			files = (
 				6259BDFE27DF9395008A8CA6 /* GameScene.swift in Sources */,
 				6259BE2B27DFACE6008A8CA6 /* StartViewController.swift in Sources */,
+				89FF137A27E0E2350043F059 /* NewGameViewController.swift in Sources */,
 				6259BDB627DF9395008A8CA6 /* GameViewController.swift in Sources */,
 				6259BDB427DF9395008A8CA6 /* AppDelegate.swift in Sources */,
 			);
@@ -745,7 +761,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D3GPAVWYTJ;
 				INFOPLIST_FILE = "BattleCode iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -766,7 +782,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D3GPAVWYTJ;
 				INFOPLIST_FILE = "BattleCode iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
