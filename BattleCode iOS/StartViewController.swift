@@ -13,7 +13,7 @@ class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for _ in 0...200 {
+        for _ in 0...500 {
             let randomIntX = Int.random(in: 10..<Int(self.view.frame.size.height-200))
             let randomIntY = Int.random(in: 50..<Int(self.view.frame.size.height-50))
 
@@ -27,7 +27,7 @@ class StartViewController: UIViewController {
 
             self.view.addSubview(label)
             self.view.sendSubviewToBack(label)
-            UIView.animate(withDuration: 3.0, delay: TimeInterval(Int.random(in: 0..<5)), options: UIView.AnimationOptions.curveEaseIn, animations: {
+            UIView.animate(withDuration: 1.0, delay: TimeInterval(Double.random(in: 0..<5)), options: UIView.AnimationOptions.curveEaseIn, animations: {
             label.alpha = 1.0
             })
         }
