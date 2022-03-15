@@ -49,41 +49,12 @@ class GameViewController: UIViewController {
             // do something with node
             if let p = (node as! SKShapeNode).path {
                 if p.contains(touchPosition) {
-                    let card = node as! SKShapeNode
-                    
-                    let xScale = card.xScale
-                    
-                    var cardLabel = SKLabelNode()
-                    var cardDescription = SKLabelNode()
-                    card.enumerateChildNodes(withName: CardConstants.TitleName) { node, _ in
-                        cardLabel = node as! SKLabelNode
-                    }
-                    card.enumerateChildNodes(withName: CardConstants.DecriptionName) { node, _ in
-                        cardDescription = node as! SKLabelNode
-                    }
-                    
-                    if xScale == 1 {
-                        let narrow = SKAction.scaleX(to: 0, duration: 0.25)
-                        let widen = SKAction.scaleX(to: 1.0, duration: 0.25)
-                        let clearImage = SKAction.run({
-                            card.fillTexture = SKTexture.init(imageNamed: CardConstants.WhiteImageName)
-                            cardLabel.isHidden = false
-                            cardDescription.isHidden = false
-                        })
-                        let grow = SKAction.scale(to: 2.0, duration: 0.5)
-                        let sequence = SKAction.sequence([narrow, clearImage, widen, grow])
-                        card.run(sequence)
+                    let card = node as! CardObj
+                                        
+                    if card.xScale == 1 {
+                        card.showFront()
                     } else {
-                        let narrow = SKAction.scaleX(to: 0, duration: 0.25)
-                        let widen = SKAction.scaleX(to: 1.0, duration: 0.25)
-                        let addImage = SKAction.run({
-                            card.fillTexture = SKTexture.init(imageNamed: CardConstants.BackgroundImageName)
-                            cardLabel.isHidden = true
-                            cardDescription.isHidden = true
-                        })
-                        let shrink = SKAction.scale(to: 1.0, duration: 0.5)
-                        let sequence = SKAction.sequence([shrink, narrow, addImage, widen])
-                        card.run(sequence)
+                        card.showBack()
                     }
                 }
             }

@@ -22,6 +22,39 @@ public class CardObj: SKShapeNode {
     public var cardTitle = ""
     public var cardDescription = ""
     
+    private func hideChildren(hide: Bool) {
+        self.enumerateChildNodes(withName: CardConstants.TitleName) { node, _ in
+            node.isHidden = hide
+        }
+        self.enumerateChildNodes(withName: CardConstants.DecriptionName) { node, _ in
+            node.isHidden = hide
+        }
+    }
+    
+    public func showFront() {
+        let narrow = SKAction.scaleX(to: 0, duration: 0.25)
+        let widen = SKAction.scaleX(to: 1.0, duration: 0.25)
+        let clearImage = SKAction.run({
+            self.fillTexture = SKTexture.init(imageNamed: CardConstants.WhiteImageName)
+            self.hideChildren(hide: false)
+        })
+        let grow = SKAction.scale(to: 2.0, duration: 0.5)
+        let sequence = SKAction.sequence([narrow, clearImage, widen, grow])
+        self.run(sequence)
+    }
+    
+    public func showBack() {
+        let narrow = SKAction.scaleX(to: 0, duration: 0.25)
+        let widen = SKAction.scaleX(to: 1.0, duration: 0.25)
+        let addImage = SKAction.run({
+            self.fillTexture = SKTexture.init(imageNamed: CardConstants.BackgroundImageName)
+            self.hideChildren(hide: true)
+        })
+        let shrink = SKAction.scale(to: 1.0, duration: 0.5)
+        let sequence = SKAction.sequence([shrink, narrow, addImage, widen])
+        self.run(sequence)
+    }
+    
     override init () {
         super.init()
         let path = CGMutablePath()
@@ -29,7 +62,7 @@ public class CardObj: SKShapeNode {
         self.path = path
         self.lineWidth = 1
         self.fillColor = .white
-        self.strokeColor = .black
+        self.strokeColor = .white
         self.glowWidth = 0.5
         self.fillTexture = SKTexture.init(imageNamed: CardConstants.BackgroundImageName)
     }
