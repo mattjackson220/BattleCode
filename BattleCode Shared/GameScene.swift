@@ -22,19 +22,10 @@ class GameScene: SKScene {
             abort()
         }
         
-        // Set the scale mode to scale to fit the window
         scene.scaleMode = .aspectFill
-        let card = CardObj().card
+        let card = createCard(cardTitle: "You win!", cardDescription: "But for real!")
         card.name = "card1"
         scene.addChild(card)
-        let cardLabel = SKLabelNode(fontNamed: "Chalkduster")
-        cardLabel.text = "You Win!"
-        cardLabel.name = "cardFront"
-        cardLabel.fontSize = 30
-        cardLabel.fontColor = SKColor.green
-        cardLabel.position = CGPoint(x: card.frame.midX, y: card.frame.midY)
-        cardLabel.isHidden = true
-        card.addChild(cardLabel)
                 
         return scene
     }

@@ -41,22 +41,6 @@ class GameViewController: UIViewController {
         return true
     }
     
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        guard let touch = touches.first else {
-//         return
-//        }
-//        let scene = (self.view as! SKView).scene!
-//        let touchPosition = touch.location(in: scene)
-//        let touchedNodes = nodes(at: touchPosition)
-//        for node in touchedNodes {
-//            if let mynode = node as? SKShapeNode, node.name == "triangle" {
-//                //stuff here
-//                mynode.fillColor = .orange //...
-//            }
-//        }
-//
-//    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
         let scene = (self.view as! SKView).scene!
@@ -70,16 +54,21 @@ class GameViewController: UIViewController {
                     let xScale = card.xScale
                     
                     var cardLabel = SKLabelNode()
-                    card.enumerateChildNodes(withName: CardConstants.cardFrontName) { node, _ in
+                    var cardDescription = SKLabelNode()
+                    card.enumerateChildNodes(withName: CardConstants.TitleName) { node, _ in
                         cardLabel = node as! SKLabelNode
+                    }
+                    card.enumerateChildNodes(withName: CardConstants.DecriptionName) { node, _ in
+                        cardDescription = node as! SKLabelNode
                     }
                     
                     if xScale == 1 {
                         let narrow = SKAction.scaleX(to: 0, duration: 0.25)
                         let widen = SKAction.scaleX(to: 1.0, duration: 0.25)
                         let clearImage = SKAction.run({
-                            card.fillTexture = SKTexture.init(imageNamed: CardConstants.whiteImageName)
+                            card.fillTexture = SKTexture.init(imageNamed: CardConstants.WhiteImageName)
                             cardLabel.isHidden = false
+                            cardDescription.isHidden = false
                         })
                         let grow = SKAction.scale(to: 2.0, duration: 0.5)
                         let sequence = SKAction.sequence([narrow, clearImage, widen, grow])
@@ -88,8 +77,9 @@ class GameViewController: UIViewController {
                         let narrow = SKAction.scaleX(to: 0, duration: 0.25)
                         let widen = SKAction.scaleX(to: 1.0, duration: 0.25)
                         let addImage = SKAction.run({
-                            card.fillTexture = SKTexture.init(imageNamed: CardConstants.backgroundImageName)
+                            card.fillTexture = SKTexture.init(imageNamed: CardConstants.BackgroundImageName)
                             cardLabel.isHidden = true
+                            cardDescription.isHidden = true
                         })
                         let shrink = SKAction.scale(to: 1.0, duration: 0.5)
                         let sequence = SKAction.sequence([shrink, narrow, addImage, widen])
