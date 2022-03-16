@@ -8,6 +8,7 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import BattleCodeShared
 
 class GameViewController: UIViewController {
     
