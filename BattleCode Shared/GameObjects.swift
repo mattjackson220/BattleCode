@@ -11,9 +11,13 @@ import SpriteKit
 public struct CardConstants {
     static public let TitleName = "cardTitle"
     static public let DecriptionName = "cardDesc"
-    static public let BackgroundImageName = "backgroundImage"
+    static public let CardBackgroundImageName = "cardBackgroundImage"
     static public let WhiteImageName = "whiteSquare"
     static public let FontName = "Chalkduster"
+    
+    static public let DeckThreeCardImageName = "threeCardDeck"
+    static public let DeckTwoCardImageName = "twoCardDeck"
+    static public let DeckOneCardImageName = "singleCardDeck"
 }
 
 public class CardObj: SKShapeNode {
@@ -47,7 +51,7 @@ public class CardObj: SKShapeNode {
         let narrow = SKAction.scaleX(to: 0, duration: 0.25)
         let widen = SKAction.scaleX(to: 1.0, duration: 0.25)
         let addImage = SKAction.run({
-            self.fillTexture = SKTexture.init(imageNamed: CardConstants.BackgroundImageName)
+            self.fillTexture = SKTexture.init(imageNamed: CardConstants.CardBackgroundImageName)
             self.hideChildren(hide: true)
         })
         let shrink = SKAction.scale(to: 1.0, duration: 0.5)
@@ -64,7 +68,7 @@ public class CardObj: SKShapeNode {
         self.fillColor = .white
         self.strokeColor = .white
         self.glowWidth = 0.5
-        self.fillTexture = SKTexture.init(imageNamed: CardConstants.BackgroundImageName)
+        self.fillTexture = SKTexture.init(imageNamed: CardConstants.CardBackgroundImageName)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -72,8 +76,9 @@ public class CardObj: SKShapeNode {
     }
 }
 
-public func createCard(cardTitle: String, cardDescription: String) -> CardObj {
+public func createCard(cardId: String, cardTitle: String, cardDescription: String) -> CardObj {
     let card = CardObj()
+    card.name = cardId
     card.cardDescription = cardDescription
     card.cardTitle = cardTitle
     
@@ -96,4 +101,41 @@ public func createCard(cardTitle: String, cardDescription: String) -> CardObj {
     card.addChild(cardDescription)
     
     return card
+}
+
+public class DeckObj: SKShapeNode {
+    
+    let height = 400
+    let width = 200
+    
+    var cards = Array<CardObj>()
+    var discard = Array<CardObj>()
+    
+    override init() {
+        super.init()
+        self.name = "deck"
+        let path = CGMutablePath()
+        path.addRect(CGRect(x: -width / 2, y: -height / 2, width: width, height: height))
+        self.path = path
+        self.fillColor = .white
+        self.glowWidth = 0.5
+        self.fillTexture = SKTexture.init(imageNamed: CardConstants.DeckThreeCardImageName)
+        cards.append(createCard(cardId: "1", cardTitle: "You Lose", cardDescription: "Better luck next time!"))
+        cards.append(createCard(cardId: "2", cardTitle: "You Win", cardDescription: "Congratulations!  Way to go!"))
+        self.shuffleDeck()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func getTopCard() -> CardObj {
+        let card = self.cards[0]
+        self.cards.remove(at: 0)
+        return card
+    }
+    
+    public func shuffleDeck() {
+        self.cards.shuffle()
+    }
 }

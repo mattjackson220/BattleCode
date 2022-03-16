@@ -45,12 +45,15 @@ class GameViewController: UIViewController {
         let touch = touches.first
         let scene = (self.view as! SKView).scene!
         let touchPosition = touch!.location(in: scene)
-        scene.enumerateChildNodes(withName: "card1") { node, _ in
+        scene.enumerateChildNodes(withName: "deck") { node, _ in
             // do something with node
             if let p = (node as! SKShapeNode).path {
                 if p.contains(touchPosition) {
-                    let card = node as! CardObj
-                                        
+                    let deck = node as! DeckObj
+                    let card = deck.getTopCard()
+                    
+                    scene.addChild(card)
+
                     if card.xScale == 1 {
                         card.showFront()
                     } else {

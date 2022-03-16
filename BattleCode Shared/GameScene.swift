@@ -23,9 +23,7 @@ class GameScene: SKScene {
         }
         
         scene.scaleMode = .aspectFill
-        let card = createCard(cardTitle: "You win!", cardDescription: "But for real!")
-        card.name = "card1"
-        scene.addChild(card)
+        scene.addChild(DeckObj())
                 
         return scene
     }
