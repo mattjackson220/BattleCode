@@ -52,12 +52,14 @@ class GameViewController: UIViewController {
                     let deck = node as! DeckObj
                     let card = deck.getTopCard()
                     
-                    scene.addChild(card)
+                    if card != nil {
+                        scene.addChild(card!)
 
-                    if card.xScale == 1 {
-                        card.showFront()
-                    } else {
-                        card.showBack()
+                        if card!.xScale == 1 {
+                            card!.showFront()
+                        } else {
+                            card!.showBack()
+                        }
                     }
                 }
             }

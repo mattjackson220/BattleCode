@@ -129,7 +129,13 @@ public class DeckObj: SKShapeNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func getTopCard() -> CardObj {
+    public func getTopCard() -> CardObj? {
+        if self.cards.count == 0 {
+            self.reshuffleDeck()
+        }
+        if self.cards.count == 0 {
+            return nil
+        }
         let card = self.cards[0]
         self.cards.remove(at: 0)
         self.determineFillTexture()
