@@ -119,10 +119,9 @@ public class DeckObj: SKShapeNode {
         self.path = path
         self.fillColor = .white
         self.glowWidth = 0.5
-        self.fillTexture = SKTexture.init(imageNamed: CardConstants.DeckThreeCardImageName)
         cards.append(createCard(cardId: "1", cardTitle: "You Lose", cardDescription: "Better luck next time!"))
         cards.append(createCard(cardId: "2", cardTitle: "You Win", cardDescription: "Congratulations!  Way to go!"))
-        self.shuffleDeck()
+        self.reshuffleDeck()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -132,10 +131,27 @@ public class DeckObj: SKShapeNode {
     public func getTopCard() -> CardObj {
         let card = self.cards[0]
         self.cards.remove(at: 0)
+        self.determineFillTexture()
         return card
     }
     
-    public func shuffleDeck() {
+    public func reshuffleDeck() {
+        self.cards.append(contentsOf: self.discard)
         self.cards.shuffle()
+        self.determineFillTexture()
+    }
+    
+    private func determineFillTexture() {
+        var cardImageName = CardConstants.DeckThreeCardImageName
+        
+        if (self.cards.count == 2) {
+            cardImageName = CardConstants.DeckTwoCardImageName
+        } else if (self.cards.count == 1) {
+            cardImageName = CardConstants.DeckOneCardImageName
+        } else if (self.cards.isEmpty) {
+            cardImageName = ""
+        }
+        
+        self.fillTexture = SKTexture.init(imageNamed: cardImageName)
     }
 }
