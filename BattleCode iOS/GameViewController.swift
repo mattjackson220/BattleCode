@@ -66,18 +66,11 @@ class GameViewController: UIViewController {
             }
         } else {
             scene.enumerateChildNodes(withName: self.selectedCardName) { node, _ in
-                // do something with node
-                if let p = (node as! SKShapeNode).path {
-                    let newWidth = p.boundingBox.width * node.xScale
-                    let newHeight = p.boundingBox.height * node.yScale
-                    let newX = -(newWidth/2)
-                    let newY = -(newHeight/2)
-                    let scaledPath = CGPath(rect: CGRect(x: newX, y: newY, width: newWidth, height: newHeight), transform: nil)
-                    if scaledPath.contains(touchPosition) {
-                        let card = node as! CardObj
-                        card.showBack()
-                        self.selectedCardName = ""
-                    }
+                let scaledPath = CGPath(rect: CGRect(x: node.frame.minX, y: node.frame.minY, width: node.frame.width, height: node.frame.height), transform: nil)
+                if scaledPath.contains(touchPosition) {
+                    let card = node as! CardObj
+                    card.showBack()
+                    self.selectedCardName = ""
                 }
             }
         }
