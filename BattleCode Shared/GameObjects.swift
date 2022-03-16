@@ -19,6 +19,8 @@ public struct CardConstants {
     static public let DeckTwoCardImageName = "twoCardDeck"
     static public let DeckOneCardImageName = "singleCardDeck"
     static public let DeckNoCardsImageName = "noCardsLeft"
+    
+    static public let DeckName = "deck"
 }
 
 public class CardObj: SKShapeNode {
@@ -57,7 +59,9 @@ public class CardObj: SKShapeNode {
         })
         let shrink = SKAction.scale(to: 1.0, duration: 0.5)
         let sequence = SKAction.sequence([shrink, narrow, addImage, widen])
-        self.run(sequence)
+        self.run(sequence, completion: ({
+            self.removeFromParent()
+        }))
     }
     
     override init () {

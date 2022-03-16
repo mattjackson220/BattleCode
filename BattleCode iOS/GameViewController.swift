@@ -11,6 +11,8 @@ import GameplayKit
 
 class GameViewController: UIViewController {
     
+    var selectedCardName = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,21 +47,36 @@ class GameViewController: UIViewController {
         let touch = touches.first
         let scene = (self.view as! SKView).scene!
         let touchPosition = touch!.location(in: scene)
-        scene.enumerateChildNodes(withName: "deck") { node, _ in
-            // do something with node
-            if let p = (node as! SKShapeNode).path {
-                if p.contains(touchPosition) {
-                    let deck = node as! DeckObj
-                    let card = deck.getTopCard()
+        if self.selectedCardName == "" {
+            scene.enumerateChildNodes(withName: CardConstants.DeckName) { node, _ in
+                // do something with node
+                if let p = (node as! SKShapeNode).path {
+                    if p.contains(touchPosition) {
+                        let deck = node as! DeckObj
+                        let card = deck.getTopCard()
                     
-                    if card != nil {
-                        scene.addChild(card!)
+                        if card != nil {
+                            scene.addChild(card!)
 
-                        if card!.xScale == 1 {
                             card!.showFront()
-                        } else {
-                            card!.showBack()
+                            self.selectedCardName = card!.name!
                         }
+                    }
+                }
+            }
+        } else {
+            scene.enumerateChildNodes(withName: self.selectedCardName) { node, _ in
+                // do something with node
+                if let p = (node as! SKShapeNode).path {
+                    let newWidth = p.boundingBox.width * node.xScale
+                    let newHeight = p.boundingBox.height * node.yScale
+                    let newX = -(newWidth/2)
+                    let newY = -(newHeight/2)
+                    let scaledPath = CGPath(rect: CGRect(x: newX, y: newY, width: newWidth, height: newHeight), transform: nil)
+                    if scaledPath.contains(touchPosition) {
+                        let card = node as! CardObj
+                        card.showBack()
+                        self.selectedCardName = ""
                     }
                 }
             }
