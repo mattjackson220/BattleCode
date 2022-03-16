@@ -38,6 +38,7 @@ public class CardObj: SKSpriteNode {
         }
         self.enumerateChildNodes(withName: CardConstants.DecriptionName) { node, _ in
             node.position = CGPoint(x: node.parent!.frame.midX, y: node.parent!.frame.midY)
+            node.zPosition = CGFloat(node.parent!.zPosition + 1)
             node.isHidden = hide
         }
     }
@@ -119,8 +120,9 @@ public func createDeck(screenWidth: Int, screenHeight: Int) -> DeckObj {
     deck.path = path
     deck.strokeColor = .clear
     deck.fillColor = .white
-    deck.cards.append(createCard(cardId: "1", cardTitle: "You Lose", cardDescription: "Better luck next time!", deck: deck))
-    deck.cards.append(createCard(cardId: "2", cardTitle: "You Win", cardDescription: "Congratulations!  Way to go!", deck: deck))
+    for cardInfo in getCardInfos() {
+        deck.cards.append(createCard(cardId: cardInfo.cardId, cardTitle: cardInfo.cardTitle, cardDescription: cardInfo.cardDescription, deck: deck))
+    }
     deck.reshuffleDeck()
     return deck;
 }
@@ -173,5 +175,20 @@ public class DeckObj: SKShapeNode {
         }
         
         self.fillTexture = SKTexture.init(imageNamed: cardImageName)
+    }
+}
+
+func getCardInfos() -> Array<CardInfo> {
+        return [CardInfo(cardId: "1", cardTitle: "You Lose", cardDescription: "Better luck next time!"),
+                CardInfo(cardId: "2", cardTitle: "You Win", cardDescription: "Congratulations!  Way to go!")]
+}
+
+public struct CardInfo {
+    let cardId, cardTitle, cardDescription: String
+    
+    init(cardId: String, cardTitle: String, cardDescription: String) {
+        self.cardId = cardId
+        self.cardTitle = cardTitle
+        self.cardDescription = cardDescription
     }
 }
