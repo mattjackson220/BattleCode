@@ -23,9 +23,11 @@ public struct CardConstants {
     static public let DeckName = "deck"
 }
 
-public class CardObj: SKShapeNode {
-    let height = 400
-    let width = 200
+public class CardObj: SKSpriteNode {
+    public var height = 0
+    public var width = 0
+    public var xCoordinate = 0
+    public var yCoordinate = 0
     public var cardTitle = ""
     public var cardDescription = ""
     
@@ -39,53 +41,47 @@ public class CardObj: SKShapeNode {
     }
     
     public func showFront() {
-        let narrow = SKAction.scaleX(to: 0, duration: 0.25)
-        let widen = SKAction.scaleX(to: 1.0, duration: 0.25)
+        let moveToCenter = SKAction.move(to: CGPoint(x: 0, y: 0), duration: 1.0)
+        let narrow = SKAction.resize(toWidth: CGFloat(0), duration: 0.25)
         let clearImage = SKAction.run({
-            self.fillTexture = SKTexture.init(imageNamed: CardConstants.WhiteImageName)
+            self.texture = SKTexture.init(imageNamed: CardConstants.WhiteImageName)
             self.hideChildren(hide: false)
         })
-        let grow = SKAction.scale(to: 2.0, duration: 0.5)
-        let sequence = SKAction.sequence([narrow, clearImage, widen, grow])
+        let widen = SKAction.resize(toWidth: CGFloat(self.width), duration: 0.25)
+        let grow = SKAction.resize(toWidth: CGFloat(4 * self.width), height: CGFloat(4 * self.height), duration: 0.5)
+        let sequence = SKAction.sequence([moveToCenter, narrow, clearImage, widen, grow])
         self.run(sequence)
     }
     
     public func showBack() {
-        let narrow = SKAction.scaleX(to: 0, duration: 0.25)
-        let widen = SKAction.scaleX(to: 1.0, duration: 0.25)
+        let narrow = SKAction.resize(toWidth: CGFloat(0), duration: 0.25)
+        let widen = SKAction.resize(toWidth: CGFloat(self.width), duration: 0.25)
         let addImage = SKAction.run({
-            self.fillTexture = SKTexture.init(imageNamed: CardConstants.CardBackgroundImageName)
+            self.texture = SKTexture.init(imageNamed: CardConstants.CardBackgroundImageName)
             self.hideChildren(hide: true)
         })
-        let shrink = SKAction.scale(to: 1.0, duration: 0.5)
+        let shrink = SKAction.resize(toWidth: CGFloat(self.width), height: CGFloat(self.height), duration: 0.5)
         let sequence = SKAction.sequence([shrink, narrow, addImage, widen])
         self.run(sequence, completion: ({
             self.removeFromParent()
         }))
     }
-    
-    override init () {
-        super.init()
-        let path = CGMutablePath()
-        path.addRect(CGRect(x: -width / 2, y: -height / 2, width: width, height: height))
-        self.path = path
-        self.lineWidth = 1
-        self.fillColor = .white
-        self.strokeColor = .white
-        self.glowWidth = 0.5
-        self.fillTexture = SKTexture.init(imageNamed: CardConstants.CardBackgroundImageName)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
 
-public func createCard(cardId: String, cardTitle: String, cardDescription: String) -> CardObj {
-    let card = CardObj()
+private func createCard(cardId: String, cardTitle: String, cardDescription: String, deck: DeckObj) -> CardObj {
+    let card = CardObj(texture: SKTexture(imageNamed: CardConstants.CardBackgroundImageName),
+                       size: CGSize(width: CGFloat(deck.width), height: CGFloat(deck.height)))
     card.name = cardId
     card.cardDescription = cardDescription
     card.cardTitle = cardTitle
+
+    card.position = CGPoint(x: deck.frame.midX, y: deck.frame.midY)
+    card.width = deck.width
+    card.height = deck.height
+    card.xCoordinate = Int(deck.frame.minX)
+    card.yCoordinate = Int(deck.frame.minY)
+    
+    card.color = .white
     
     let cardLabel = SKLabelNode(fontNamed: CardConstants.FontName)
     cardLabel.text = card.cardTitle
@@ -119,8 +115,8 @@ public func createDeck(screenWidth: Int, screenHeight: Int) -> DeckObj {
     deck.path = path
     deck.strokeColor = .clear
     deck.fillColor = .white
-    deck.cards.append(createCard(cardId: "1", cardTitle: "You Lose", cardDescription: "Better luck next time!"))
-    deck.cards.append(createCard(cardId: "2", cardTitle: "You Win", cardDescription: "Congratulations!  Way to go!"))
+    deck.cards.append(createCard(cardId: "1", cardTitle: "You Lose", cardDescription: "Better luck next time!", deck: deck))
+    deck.cards.append(createCard(cardId: "2", cardTitle: "You Win", cardDescription: "Congratulations!  Way to go!", deck: deck))
     deck.reshuffleDeck()
     return deck;
 }
