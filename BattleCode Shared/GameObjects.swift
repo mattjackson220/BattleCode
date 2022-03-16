@@ -18,6 +18,7 @@ public struct CardConstants {
     static public let DeckThreeCardImageName = "threeCardDeck"
     static public let DeckTwoCardImageName = "twoCardDeck"
     static public let DeckOneCardImageName = "singleCardDeck"
+    static public let DeckNoCardsImageName = "noCardsLeft"
 }
 
 public class CardObj: SKShapeNode {
@@ -117,8 +118,8 @@ public class DeckObj: SKShapeNode {
         let path = CGMutablePath()
         path.addRect(CGRect(x: -width / 2, y: -height / 2, width: width, height: height))
         self.path = path
+        self.strokeColor = .clear
         self.fillColor = .white
-        self.glowWidth = 0.5
         cards.append(createCard(cardId: "1", cardTitle: "You Lose", cardDescription: "Better luck next time!"))
         cards.append(createCard(cardId: "2", cardTitle: "You Win", cardDescription: "Congratulations!  Way to go!"))
         self.reshuffleDeck()
@@ -149,7 +150,7 @@ public class DeckObj: SKShapeNode {
         } else if (self.cards.count == 1) {
             cardImageName = CardConstants.DeckOneCardImageName
         } else if (self.cards.isEmpty) {
-            cardImageName = ""
+            cardImageName = CardConstants.DeckNoCardsImageName
         }
         
         self.fillTexture = SKTexture.init(imageNamed: cardImageName)
