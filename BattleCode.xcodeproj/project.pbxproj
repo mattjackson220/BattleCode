@@ -43,7 +43,6 @@
 		6259BE0427DF9395008A8CA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6259BDAB27DF9395008A8CA6 /* Assets.xcassets */; };
 		6259BE0527DF9395008A8CA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6259BDAB27DF9395008A8CA6 /* Assets.xcassets */; };
 		6259BE2B27DFACE6008A8CA6 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259BE2A27DFACE6008A8CA6 /* StartViewController.swift */; };
-		89D9A56727E23A6C00D6831B /* threeCardDeck.png in Resources */ = {isa = PBXBuildFile; fileRef = 89D9A56627E23A6C00D6831B /* threeCardDeck.png */; };
 		89FF137A27E0E2350043F059 /* NewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FF137827E0E2350043F059 /* NewGameViewController.swift */; };
 		89FF137B27E0E2350043F059 /* NewGameScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89FF137927E0E2350043F059 /* NewGameScreen.storyboard */; };
 		89FF137F27E0EEFA0043F059 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FF137E27E0EEFA0043F059 /* BaseViewController.swift */; };
@@ -123,7 +122,6 @@
 		6259BDF527DF9395008A8CA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6259BDF627DF9395008A8CA6 /* BattleCode_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BattleCode_macOS.entitlements; sourceTree = "<group>"; };
 		6259BE2A27DFACE6008A8CA6 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
-		89D9A56627E23A6C00D6831B /* threeCardDeck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = threeCardDeck.png; path = ../../../Downloads/threeCardDeck.png; sourceTree = "<group>"; };
 		89FF137827E0E2350043F059 /* NewGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameViewController.swift; sourceTree = "<group>"; };
 		89FF137927E0E2350043F059 /* NewGameScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewGameScreen.storyboard; sourceTree = "<group>"; };
 		89FF137E27E0EEFA0043F059 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -181,7 +179,6 @@
 				6259BDA927DF9391008A8CA6 /* GameScene.sks */,
 				6259BDAA27DF9391008A8CA6 /* GameScene.swift */,
 				6259BDAB27DF9395008A8CA6 /* Assets.xcassets */,
-				89D9A56627E23A6C00D6831B /* threeCardDeck.png */,
 				89FF137E27E0EEFA0043F059 /* BaseViewController.swift */,
 				621CD52627E0F7EA00431E30 /* GameObjects.swift */,
 			);
@@ -411,7 +408,6 @@
 			files = (
 				6259BDFA27DF9395008A8CA6 /* GameScene.sks in Resources */,
 				6259BDB927DF9395008A8CA6 /* Main.storyboard in Resources */,
-				89D9A56727E23A6C00D6831B /* threeCardDeck.png in Resources */,
 				6259BDF727DF9395008A8CA6 /* Actions.sks in Resources */,
 				6259BDBC27DF9395008A8CA6 /* LaunchScreen.storyboard in Resources */,
 				6259BE0227DF9395008A8CA6 /* Assets.xcassets in Resources */,
