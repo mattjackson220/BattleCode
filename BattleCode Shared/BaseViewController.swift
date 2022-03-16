@@ -31,7 +31,7 @@ class BaseViewController: UIViewController {
             let delay = Double.random(in: 0..<5)
             
             UIView.animate(
-                withDuration: 1.0,
+                withDuration: 0.5,
                 delay: TimeInterval(delay),
                 options: UIView.AnimationOptions.curveEaseIn,
                 animations: { label.alpha = 1.0 },

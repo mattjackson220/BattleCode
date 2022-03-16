@@ -33,34 +33,36 @@ public class CardObj: SKSpriteNode {
     
     private func hideChildren(hide: Bool) {
         self.enumerateChildNodes(withName: CardConstants.TitleName) { node, _ in
+            node.position = CGPoint(x: node.parent!.frame.midX, y: node.parent!.frame.maxY - 30)
             node.isHidden = hide
         }
         self.enumerateChildNodes(withName: CardConstants.DecriptionName) { node, _ in
+            node.position = CGPoint(x: node.parent!.frame.midX, y: node.parent!.frame.midY)
             node.isHidden = hide
         }
     }
     
     public func showFront() {
         let moveToCenter = SKAction.move(to: CGPoint(x: 0, y: 0), duration: 1.0)
-        let narrow = SKAction.resize(toWidth: CGFloat(0), duration: 0.25)
+        let narrow = SKAction.scaleX(to: 0, duration: 0.25)
         let clearImage = SKAction.run({
             self.texture = SKTexture.init(imageNamed: CardConstants.WhiteImageName)
             self.hideChildren(hide: false)
         })
-        let widen = SKAction.resize(toWidth: CGFloat(self.width), duration: 0.25)
-        let grow = SKAction.resize(toWidth: CGFloat(4 * self.width), height: CGFloat(4 * self.height), duration: 0.5)
+        let widen = SKAction.scaleX(to: 1.0, duration: 0.25)
+        let grow = SKAction.scale(to: 4.0, duration: 0.5)
         let sequence = SKAction.sequence([moveToCenter, narrow, clearImage, widen, grow])
         self.run(sequence)
     }
     
     public func showBack() {
-        let narrow = SKAction.resize(toWidth: CGFloat(0), duration: 0.25)
-        let widen = SKAction.resize(toWidth: CGFloat(self.width), duration: 0.25)
+        let narrow = SKAction.scaleX(to: CGFloat(0), duration: 0.25)
+        let widen = SKAction.scaleX(to: CGFloat(1.0), duration: 0.25)
         let addImage = SKAction.run({
             self.texture = SKTexture.init(imageNamed: CardConstants.CardBackgroundImageName)
             self.hideChildren(hide: true)
         })
-        let shrink = SKAction.resize(toWidth: CGFloat(self.width), height: CGFloat(self.height), duration: 0.5)
+        let shrink = SKAction.scale(to: CGFloat(1.0), duration: 0.5)
         let sequence = SKAction.sequence([shrink, narrow, addImage, widen])
         self.run(sequence, completion: ({
             self.removeFromParent()
@@ -86,21 +88,23 @@ private func createCard(cardId: String, cardTitle: String, cardDescription: Stri
     let cardLabel = SKLabelNode(fontNamed: CardConstants.FontName)
     cardLabel.text = card.cardTitle
     cardLabel.name = CardConstants.TitleName
-    cardLabel.fontSize = 30
+    cardLabel.fontSize = 10
     cardLabel.fontColor = SKColor.green
     cardLabel.position = CGPoint(x: card.frame.midX, y: card.frame.midY + 50)
     cardLabel.isHidden = true
+    cardLabel.zPosition = card.zPosition + 1
     card.addChild(cardLabel)
     
     let cardDescription = SKLabelNode(fontNamed: CardConstants.FontName)
     cardDescription.text = card.cardDescription
     cardDescription.name = CardConstants.DecriptionName
-    cardDescription.fontSize = 10
+    cardDescription.fontSize = 5
     cardDescription.fontColor = SKColor.green
     cardDescription.position = CGPoint(x: card.frame.midX, y: card.frame.midY)
     cardDescription.isHidden = true
+    cardDescription.zPosition = card.zPosition + 1
     card.addChild(cardDescription)
-    
+        
     return card
 }
 
