@@ -23,7 +23,6 @@ class GameScene: SKScene {
         }
         
         scene.scaleMode = .aspectFill
-        scene.addChild(DeckObj())
                 
         return scene
     }

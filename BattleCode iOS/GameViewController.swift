@@ -12,11 +12,13 @@ import GameplayKit
 class GameViewController: UIViewController {
     
     var selectedCardName = ""
+    var playerHand = Array<CardObj>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let scene = GameScene.newGameScene()
+        scene.addChild(createDeck(screenWidth: Int(UIScreen.main.bounds.width), screenHeight: Int(UIScreen.main.bounds.height)))
 
         // Present the scene
         let skView = self.view as! SKView
@@ -71,9 +73,9 @@ class GameViewController: UIViewController {
                     let card = node as! CardObj
                     card.showBack()
                     self.selectedCardName = ""
+                    self.playerHand.append(card)
                 }
             }
         }
     }
-    
 }

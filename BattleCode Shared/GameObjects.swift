@@ -108,25 +108,34 @@ public func createCard(cardId: String, cardTitle: String, cardDescription: Strin
     return card
 }
 
+public func createDeck(screenWidth: Int, screenHeight: Int) -> DeckObj {
+    let deck = DeckObj()
+    let path = CGMutablePath()
+    
+    let startingX = (screenWidth / 2) - deck.width
+    let startingY = (screenHeight / 2) - deck.height
+    path.addRect(CGRect(x: startingX, y: startingY, width: deck.width, height: deck.height))
+    
+    deck.path = path
+    deck.strokeColor = .clear
+    deck.fillColor = .white
+    deck.cards.append(createCard(cardId: "1", cardTitle: "You Lose", cardDescription: "Better luck next time!"))
+    deck.cards.append(createCard(cardId: "2", cardTitle: "You Win", cardDescription: "Congratulations!  Way to go!"))
+    deck.reshuffleDeck()
+    return deck;
+}
+
 public class DeckObj: SKShapeNode {
     
-    let height = 400
-    let width = 200
+    let height = 200
+    let width = 100
     
     var cards = Array<CardObj>()
     var discard = Array<CardObj>()
     
     override init() {
         super.init()
-        self.name = "deck"
-        let path = CGMutablePath()
-        path.addRect(CGRect(x: -width / 2, y: -height / 2, width: width, height: height))
-        self.path = path
-        self.strokeColor = .clear
-        self.fillColor = .white
-        cards.append(createCard(cardId: "1", cardTitle: "You Lose", cardDescription: "Better luck next time!"))
-        cards.append(createCard(cardId: "2", cardTitle: "You Win", cardDescription: "Congratulations!  Way to go!"))
-        self.reshuffleDeck()
+        self.name = CardConstants.DeckName
     }
     
     required init?(coder aDecoder: NSCoder) {
