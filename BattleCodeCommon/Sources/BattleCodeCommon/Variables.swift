@@ -21,4 +21,12 @@ public struct CardConstants {
     
     static public let DeckName = "deck"
     static public let PlayerHandName = "playerHand"
+    
+    public enum CardLocation {
+        case PlayerHand
+        case OpponentHand
+        case Deck
+        case Discard
+    }
+
 }

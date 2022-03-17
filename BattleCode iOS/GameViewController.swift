@@ -12,8 +12,9 @@ import BattleCodeCommon
 
 class GameViewController: UIViewController {
     
-    var selectedCardName = ""
+    var selectedCard: CardObj?
     var playerHand = PlayerHandObj(path: CGMutablePath())
+    var showingPlayerHand = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,19 @@ class GameViewController: UIViewController {
         skView.ignoresSiblingOrder = true
         skView.showsFPS = true
         skView.showsNodeCount = true
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+        swipeDown.direction = .up
+        self.view.addGestureRecognizer(swipeDown)
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+        swipeUp.direction = .down
+        self.view.addGestureRecognizer(swipeUp)
         
     }
 
@@ -53,7 +67,7 @@ class GameViewController: UIViewController {
         let touch = touches.first
         let scene = (self.view as! SKView).scene!
         let touchPosition = touch!.location(in: scene)
-        if self.selectedCardName == "" {
+        if self.selectedCard == nil {
             scene.enumerateChildNodes(withName: CardConstants.DeckName) { node, _ in
                 // do something with node
                 if let p = (node as! SKShapeNode).path {
@@ -65,13 +79,30 @@ class GameViewController: UIViewController {
                             scene.addChild(card!)
 
                             card!.showFront()
-                            self.selectedCardName = card!.name!
+                            self.selectedCard = card!
                         }
                     }
                 }
             }
-        } else {
-            scene.enumerateChildNodes(withName: self.selectedCardName) { node, _ in
+            scene.enumerateChildNodes(withName: CardConstants.PlayerHandName) { node, _ in
+                // do something with node
+                if let p = (node as! SKShapeNode).path {
+                    if p.contains(touchPosition) {
+                        let hand = node as! PlayerHandObj
+                        let card = hand.getTopCard()
+                    
+                        if card != nil {
+                            scene.addChild(card!)
+
+                            card!.showFront()
+                            self.selectedCard = card!
+                            self.showingPlayerHand = true
+                        }
+                    }
+                }
+            }
+        } else if !showingPlayerHand {
+            scene.enumerateChildNodes(withName: (self.selectedCard?.name)!) { node, _ in
                 let scaledPath = CGPath(rect: CGRect(x: node.frame.minX, y: node.frame.minY, width: node.frame.width, height: node.frame.height), transform: nil)
                 if scaledPath.contains(touchPosition) {
                     let card = node as! CardObj
@@ -82,9 +113,38 @@ class GameViewController: UIViewController {
     }
     
     func addCardToPlayerHand(card: CardObj) {
-        self.selectedCardName = ""
+        self.selectedCard = nil
         self.playerHand.addCardToDeck(card: card)
         self.playerHand.determineFillTexture()
+        card.cardLocation = CardConstants.CardLocation.PlayerHand
         card.removeFromParent()
+    }
+    
+    func returnCardToPlayerHand(card: CardObj) {
+        self.selectedCard = nil
+        self.playerHand.determineFillTexture()
+        card.cardLocation = CardConstants.CardLocation.PlayerHand
+        card.removeFromParent()
+    }
+    
+    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            if showingPlayerHand {
+                switch swipeGesture.direction {
+                case .right:
+                    print("Swiped right")
+                case .left:
+                    print("Swiped left")
+                case .up:
+                    print("Swiped up")
+                case .down:
+                    print("Swiped down")
+                    self.selectedCard!.showBack(completion: {self.returnCardToPlayerHand(card: self.selectedCard!)})
+                    self.showingPlayerHand = false
+                default:
+                    break
+                }
+            }
+        }
     }
 }

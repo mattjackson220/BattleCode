@@ -15,6 +15,7 @@ public class CardObj: SKSpriteNode {
     public var yCoordinate = 0
     public var cardTitle = ""
     public var cardDescription = ""
+    public var cardLocation = CardConstants.CardLocation.Deck
     
     private func hideChildren(hide: Bool) {
         self.enumerateChildNodes(withName: CardConstants.TitleName) { node, _ in
