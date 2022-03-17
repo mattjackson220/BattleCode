@@ -47,7 +47,7 @@ public class PlayerHandObj: SKShapeNode {
         } else if (self.cards.count == 1) {
             cardImageName = DeckConstants.DeckOneCardImageName
         } else if (self.cards.isEmpty) {
-            cardImageName = DeckConstants.DeckNoCardsImageName
+            cardImageName = DeckConstants.EmptyPlayerHandImageName
         }
         
         self.fillTexture = SKTexture.init(imageNamed: cardImageName)

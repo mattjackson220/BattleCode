@@ -28,6 +28,8 @@ public struct DeckConstants {
     static public let DeckTwoCardImageName = "twoCardDeck"
     static public let DeckOneCardImageName = "singleCardDeck"
     static public let DeckNoCardsImageName = "noCardsLeft"
+    static public let EmptyPlayerHandImageName = "EmptyPlayerHand"
+    static public let EmptyDiscardImageName = "EmptyDiscard"
     
     static public let DeckName = "deck"
     static public let DiscardName = "discard"
