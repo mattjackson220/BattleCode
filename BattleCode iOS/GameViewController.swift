@@ -15,6 +15,8 @@ class GameViewController: UIViewController {
     var selectedCard: CardObj?
     var playerHand = PlayerHandObj(path: CGMutablePath())
     var showingPlayerHand = false
+    var playerHandIndex = 0
+    var inAction = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,13 +74,14 @@ class GameViewController: UIViewController {
                 // do something with node
                 if let p = (node as! SKShapeNode).path {
                     if p.contains(touchPosition) {
+                        self.inAction = true
                         let deck = node as! DeckObj
                         let card = deck.getTopCard()
                     
                         if card != nil {
                             scene.addChild(card!)
 
-                            card!.showFront()
+                            card!.showFront(completion: {self.inAction = false})
                             self.selectedCard = card!
                         }
                     }
@@ -88,13 +91,14 @@ class GameViewController: UIViewController {
                 // do something with node
                 if let p = (node as! SKShapeNode).path {
                     if p.contains(touchPosition) {
+                        self.inAction = true
                         let hand = node as! PlayerHandObj
                         let card = hand.getTopCard()
                     
                         if card != nil {
                             scene.addChild(card!)
 
-                            card!.showFront()
+                            card!.showFront(completion: {self.inAction = false})
                             self.selectedCard = card!
                             self.showingPlayerHand = true
                         }
@@ -103,6 +107,7 @@ class GameViewController: UIViewController {
             }
         } else if !showingPlayerHand {
             scene.enumerateChildNodes(withName: (self.selectedCard?.name)!) { node, _ in
+                self.inAction = true
                 let scaledPath = CGPath(rect: CGRect(x: node.frame.minX, y: node.frame.minY, width: node.frame.width, height: node.frame.height), transform: nil)
                 if scaledPath.contains(touchPosition) {
                     let card = node as! CardObj
@@ -117,6 +122,7 @@ class GameViewController: UIViewController {
         self.playerHand.addCardToDeck(card: card)
         self.playerHand.determineFillTexture()
         card.cardLocation = CardConstants.CardLocation.PlayerHand
+        self.inAction = false
         card.removeFromParent()
     }
     
@@ -128,22 +134,41 @@ class GameViewController: UIViewController {
     }
     
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        let scene = (self.view as! SKView).scene!
+        
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-            if showingPlayerHand {
+            if showingPlayerHand && !self.inAction {
+                self.inAction = true
                 switch swipeGesture.direction {
                 case .right:
-                    print("Swiped right")
+                    self.playerHandIndex = playerHand.getPreviousCardIndex(currentIndex: playerHandIndex)
+                    let newCard = self.playerHand.getCard(index: playerHandIndex, selected: true)
+                    scene.enumerateChildNodes(withName: (self.selectedCard?.name)!) { node, _ in
+                        let oldCard = node as! CardObj
+                        oldCard.returnToLocation(x: 0, y: Int(self.playerHand.frame.minY))
+                        oldCard.removeFromParent()
+                        scene.addChild(newCard)
+                        self.selectedCard = newCard
+                    }
                 case .left:
-                    print("Swiped left")
+                    self.playerHandIndex = playerHand.getNextCardIndex(currentIndex: playerHandIndex)
+                    let newCard = self.playerHand.getCard(index: playerHandIndex, selected: true)
+                    scene.enumerateChildNodes(withName: (self.selectedCard?.name)!) { node, _ in
+                        let oldCard = node as! CardObj
+                        oldCard.returnToLocation(x: 0, y: Int(self.playerHand.frame.minY))
+                        oldCard.removeFromParent()
+                        scene.addChild(newCard)
+                        self.selectedCard = newCard
+                    }
                 case .up:
                     print("Swiped up")
                 case .down:
-                    print("Swiped down")
-                    self.selectedCard!.showBack(completion: {self.returnCardToPlayerHand(card: self.selectedCard!)})
+                    self.selectedCard?.showBack(completion: {self.returnCardToPlayerHand(card: self.selectedCard!)})
                     self.showingPlayerHand = false
                 default:
                     break
                 }
+                self.inAction = false
             }
         }
     }

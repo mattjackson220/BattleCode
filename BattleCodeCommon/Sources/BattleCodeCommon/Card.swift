@@ -18,19 +18,21 @@ public class CardObj: SKSpriteNode {
     public var cardLocation = CardConstants.CardLocation.Deck
     
     private func hideChildren(hide: Bool) {
-        self.enumerateChildNodes(withName: CardConstants.TitleName) { node, _ in
-            node.position = CGPoint(x: node.parent!.frame.midX, y: node.parent!.frame.maxY - 30)
-            node.isHidden = hide
-        }
         self.enumerateChildNodes(withName: CardConstants.DecriptionName) { node, _ in
             node.position = CGPoint(x: node.parent!.frame.midX, y: node.parent!.frame.midY)
             node.zPosition = CGFloat(node.parent!.zPosition + 1)
             node.isHidden = hide
         }
+        self.enumerateChildNodes(withName: CardConstants.TitleName) { node, _ in
+            node.position = CGPoint(x: node.parent!.frame.midX, y: node.parent!.frame.maxY - 30)
+            node.zPosition = CGFloat(node.parent!.zPosition + 3)
+            node.isHidden = hide
+        }
+
     }
     
-    public func showFront() {
-        let moveToCenter = SKAction.move(to: CGPoint(x: 0, y: 0), duration: 1.0)
+    public func showFront(completion block: @escaping () -> Void) {
+        let moveToCenter = SKAction.move(to: CGPoint(x: 0, y: 0), duration: 0.25)
         let narrow = SKAction.scaleX(to: 0, duration: 0.25)
         let clearImage = SKAction.run({
             self.texture = SKTexture.init(imageNamed: CardConstants.WhiteImageName)
@@ -39,7 +41,7 @@ public class CardObj: SKSpriteNode {
         let widen = SKAction.scaleX(to: 1.0, duration: 0.25)
         let grow = SKAction.scale(to: 4.0, duration: 0.5)
         let sequence = SKAction.sequence([moveToCenter, narrow, clearImage, widen, grow])
-        self.run(sequence)
+        self.run(sequence, completion: block)
     }
     
     public func showBack(completion block: @escaping () -> Void) {
@@ -50,10 +52,35 @@ public class CardObj: SKSpriteNode {
             self.hideChildren(hide: true)
         })
         let shrink = SKAction.scale(to: CGFloat(1.0), duration: 0.5)
-        let moveToBottom = SKAction.move(to: CGPoint(x: 0, y: Int(-UIScreen.main.bounds.height / 2) + self.height/2), duration: 1.0)
+        let moveToBottom = SKAction.move(to: CGPoint(x: 0, y: Int(-UIScreen.main.bounds.height / 2) + self.height/2), duration: 0.25)
         let sequence = SKAction.sequence([shrink, narrow, addImage, widen, moveToBottom])
         self.run(sequence, completion: block)
     }
+    
+    public func showAsSelected() {
+        self.texture = SKTexture.init(imageNamed: CardConstants.WhiteImageName)
+        self.position = CGPoint(x: 0,y: 0)
+        self.hideChildren(hide: false)
+        if #available(iOS 10.0, *) {
+            self.scale(to: CGSize(width: 4 * self.width, height: 4 * self.height))
+        } else {
+            // Fallback on earlier versions
+            return
+        }
+    }
+    
+    public func returnToLocation(x: Int, y: Int) {
+        self.texture = SKTexture.init(imageNamed: CardConstants.CardBackgroundImageName)
+        self.position = CGPoint(x: x, y: y)
+        self.hideChildren(hide: true)
+        if #available(iOS 10.0, *) {
+            self.scale(to: CGSize(width: self.width, height: self.height))
+        } else {
+            // Fallback on earlier versions
+            return
+        }
+    }
+
 }
 
 public func createCard(cardId: String, cardTitle: String, cardDescription: String, deck: DeckObj) -> CardObj {

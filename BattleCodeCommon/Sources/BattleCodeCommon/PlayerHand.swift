@@ -63,4 +63,30 @@ public class PlayerHandObj: SKShapeNode {
         }
         return self.cards[0]
     }
+    
+    public func getNextCardIndex(currentIndex: Int) -> Int {
+        if self.cards.count - 1 == currentIndex {
+            return 0
+        } else {
+            return currentIndex + 1
+        }
+    }
+    
+    public func getPreviousCardIndex(currentIndex: Int) -> Int {
+        if currentIndex == 0 {
+            return self.cards.count - 1
+        } else {
+            return currentIndex - 1
+        }
+    }
+    
+    public func getCard(index: Int, selected: Bool) -> CardObj {
+        let card = self.cards[index]
+        
+        if selected {
+            card.showAsSelected()
+        }
+        
+        return card
+    }
 }
