@@ -13,13 +13,6 @@ public struct CardConstants {
     static public let CardBackgroundImageName = "cardBackgroundImage"
     static public let WhiteImageName = "whiteSquare"
     static public let FontName = "Chalkduster"
-    
-    static public let DeckThreeCardImageName = "threeCardDeck"
-    static public let DeckTwoCardImageName = "twoCardDeck"
-    static public let DeckOneCardImageName = "singleCardDeck"
-    static public let DeckNoCardsImageName = "noCardsLeft"
-    
-    static public let DeckName = "deck"
     static public let PlayerHandName = "playerHand"
     
     public enum CardLocation {
@@ -28,5 +21,14 @@ public struct CardConstants {
         case Deck
         case Discard
     }
+}
 
+public struct DeckConstants {
+    static public let DeckThreeCardImageName = "threeCardDeck"
+    static public let DeckTwoCardImageName = "twoCardDeck"
+    static public let DeckOneCardImageName = "singleCardDeck"
+    static public let DeckNoCardsImageName = "noCardsLeft"
+    
+    static public let DeckName = "deck"
+    static public let DiscardName = "discard"
 }

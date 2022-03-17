@@ -8,6 +8,7 @@
 import Foundation
 import SpriteKit
 
+@available(iOS 11.0, *)
 public func createDeck(screenWidth: Int, screenHeight: Int) -> DeckObj {
     let deck = DeckObj()
     let path = CGMutablePath()
@@ -22,7 +23,9 @@ public func createDeck(screenWidth: Int, screenHeight: Int) -> DeckObj {
     for cardInfo in getCardInfos() {
         deck.cards.append(createCard(cardId: cardInfo.cardId, cardTitle: cardInfo.cardTitle, cardDescription: cardInfo.cardDescription, deck: deck))
     }
-    deck.reshuffleDeck()
+    
+    deck.cards.shuffle()
+    deck.determineFillTexture()
     return deck;
 }
 
@@ -32,11 +35,11 @@ public class DeckObj: SKShapeNode {
     let width = 100
     
     var cards = Array<CardObj>()
-    var discard = Array<CardObj>()
+    public var discard = DiscardObj()
     
     override init() {
         super.init()
-        self.name = CardConstants.DeckName
+        self.name = DeckConstants.DeckName
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -44,36 +47,32 @@ public class DeckObj: SKShapeNode {
     }
     
     public func getTopCard() -> CardObj? {
-        if self.cards.count == 0 {
-            self.reshuffleDeck()
-        }
-        if self.cards.count == 0 {
-            return nil
-        }
         let card = self.cards[0]
         self.cards.remove(at: 0)
         self.determineFillTexture()
         return card
     }
     
-    public func reshuffleDeck() {
-        self.cards.append(contentsOf: self.discard)
-        self.cards.shuffle()
-        self.determineFillTexture()
-    }
-    
     public func determineFillTexture() {
-        var cardImageName = CardConstants.DeckThreeCardImageName
+        var cardImageName = DeckConstants.DeckThreeCardImageName
         
         if (self.cards.count == 2) {
-            cardImageName = CardConstants.DeckTwoCardImageName
+            cardImageName = DeckConstants.DeckTwoCardImageName
         } else if (self.cards.count == 1) {
-            cardImageName = CardConstants.DeckOneCardImageName
+            cardImageName = DeckConstants.DeckOneCardImageName
         } else if (self.cards.isEmpty) {
-            cardImageName = CardConstants.DeckNoCardsImageName
+            cardImageName = DeckConstants.DeckNoCardsImageName
         }
         
         self.fillTexture = SKTexture.init(imageNamed: cardImageName)
     }
     
+    public func reshuffleDeck() {
+        self.cards.append(contentsOf: self.discard.cards)
+        self.discard.cards.removeAll()
+        self.cards.shuffle()
+        
+        self.determineFillTexture()
+        self.discard.determineFillTexture()
+    }
 }

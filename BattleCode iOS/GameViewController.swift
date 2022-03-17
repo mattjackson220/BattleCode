@@ -23,7 +23,9 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         let scene = GameScene.newGameScene()
-        scene.addChild(createDeck(screenWidth: Int(UIScreen.main.bounds.width), screenHeight: Int(UIScreen.main.bounds.height)))
+        let deck = createDeck(screenWidth: Int(UIScreen.main.bounds.width), screenHeight: Int(UIScreen.main.bounds.height))
+        scene.addChild(deck)
+        scene.addChild(deck.discard)
         let playerHand = createPlayerHand(screenWidth: Int(UIScreen.main.bounds.width), screenHeight: Int(UIScreen.main.bounds.height))
         self.playerHand = playerHand
         scene.addChild(playerHand)
@@ -71,7 +73,7 @@ class GameViewController: UIViewController {
         let scene = (self.view as! SKView).scene!
         let touchPosition = touch!.location(in: scene)
         if self.selectedCard == nil {
-            scene.enumerateChildNodes(withName: CardConstants.DeckName) { node, _ in
+            scene.enumerateChildNodes(withName: DeckConstants.DeckName) { node, _ in
                 // do something with node
                 if let p = (node as! SKShapeNode).path {
                     if p.contains(touchPosition) {

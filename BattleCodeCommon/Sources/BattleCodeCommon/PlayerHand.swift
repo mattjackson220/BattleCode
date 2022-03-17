@@ -40,14 +40,14 @@ public class PlayerHandObj: SKShapeNode {
     }
     
     public func determineFillTexture() {
-        var cardImageName = CardConstants.DeckThreeCardImageName
+        var cardImageName = DeckConstants.DeckThreeCardImageName
         
         if (self.cards.count == 2) {
-            cardImageName = CardConstants.DeckTwoCardImageName
+            cardImageName = DeckConstants.DeckTwoCardImageName
         } else if (self.cards.count == 1) {
-            cardImageName = CardConstants.DeckOneCardImageName
+            cardImageName = DeckConstants.DeckOneCardImageName
         } else if (self.cards.isEmpty) {
-            cardImageName = CardConstants.DeckNoCardsImageName
+            cardImageName = DeckConstants.DeckNoCardsImageName
         }
         
         self.fillTexture = SKTexture.init(imageNamed: cardImageName)
