@@ -121,8 +121,10 @@ class GameViewController: UIViewController {
         self.discard!.determineFillTexture()
         self.inAction = false
         card.removeFromParent()
+        card.returnToLocation(x: (Int(UIScreen.main.bounds.width) / 2) - card.width, y: Int(UIScreen.main.bounds.height / 2) - card.height)
     }
     
+    // TODO something is weird here... after discard reloads then it cant add to player hand
     func addCardToPlayerHand(card: CardObj) {
         self.selectedCard = nil
         self.playerHand.addCardToDeck(card: card)
@@ -177,7 +179,15 @@ class GameViewController: UIViewController {
                     self.selectedCard = newCard
                 }
             case .up:
-                print("Swiped up")
+                self.inAction = true
+                self.selectedCard?.discard(completion: {
+                    self.addCardToDiscardPile(card: self.selectedCard!)
+                    self.playerHand.removeCard(index: self.playerHandIndex)
+                    self.playerHand.determineFillTexture()
+                    self.playerHandIndex = 0
+                    self.showingDrawnCard = false
+                    self.inAction = false
+                })
             case .down:
                 self.selectedCard?.showBack(completion: {self.returnCardToPlayerHand(card: self.selectedCard!)})
                 self.showingPlayerHand = false
@@ -196,8 +206,6 @@ class GameViewController: UIViewController {
                     self.showingDrawnCard = false
                     self.inAction = false
                 })
-                self.showingDrawnCard = false
-                self.inAction = false
             case .down:
                 self.inAction = true
                 self.selectedCard?.showBack(completion: {

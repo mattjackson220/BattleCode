@@ -89,4 +89,8 @@ public class PlayerHandObj: SKShapeNode {
         
         return card
     }
+    
+    public func removeCard(index: Int) {
+        self.cards.remove(at: index)
+    }
 }
