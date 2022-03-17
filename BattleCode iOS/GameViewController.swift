@@ -13,14 +13,16 @@ import BattleCodeCommon
 class GameViewController: UIViewController {
     
     var selectedCardName = ""
-    var playerHand = Array<CardObj>()
+    var playerHand = PlayerHandObj(path: CGMutablePath())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let scene = GameScene.newGameScene()
         scene.addChild(createDeck(screenWidth: Int(UIScreen.main.bounds.width), screenHeight: Int(UIScreen.main.bounds.height)))
-        scene.addChild(createPlayerHand(screenWidth: Int(UIScreen.main.bounds.width), screenHeight: Int(UIScreen.main.bounds.height)))
+        let playerHand = createPlayerHand(screenWidth: Int(UIScreen.main.bounds.width), screenHeight: Int(UIScreen.main.bounds.height))
+        self.playerHand = playerHand
+        scene.addChild(playerHand)
 
         // Present the scene
         let skView = self.view as! SKView
@@ -73,11 +75,16 @@ class GameViewController: UIViewController {
                 let scaledPath = CGPath(rect: CGRect(x: node.frame.minX, y: node.frame.minY, width: node.frame.width, height: node.frame.height), transform: nil)
                 if scaledPath.contains(touchPosition) {
                     let card = node as! CardObj
-                    card.showBack()
-                    self.selectedCardName = ""
-                    self.playerHand.append(card)
+                    card.showBack(completion: {self.addCardToPlayerHand(card: card)})
                 }
             }
         }
+    }
+    
+    func addCardToPlayerHand(card: CardObj) {
+        self.selectedCardName = ""
+        self.playerHand.addCardToDeck(card: card)
+        self.playerHand.determineFillTexture()
+        card.removeFromParent()
     }
 }

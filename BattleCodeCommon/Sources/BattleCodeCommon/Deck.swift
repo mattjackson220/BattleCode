@@ -26,7 +26,7 @@ public func createDeck(screenWidth: Int, screenHeight: Int) -> DeckObj {
     return deck;
 }
 
-public func createPlayerHand(screenWidth: Int, screenHeight: Int) -> DeckObj {
+public func createPlayerHand(screenWidth: Int, screenHeight: Int) -> PlayerHandObj {
     let hand = PlayerHandObj()
     let path = CGMutablePath()
     
@@ -42,7 +42,12 @@ public func createPlayerHand(screenWidth: Int, screenHeight: Int) -> DeckObj {
     return hand;
 }
 
-public class PlayerHandObj: DeckObj {
+public class PlayerHandObj: SKShapeNode {
+    let height = 200
+    let width = 100
+    
+    var cards = Array<CardObj>()
+    
     override init() {
         super.init()
         self.name = CardConstants.PlayerHandName
@@ -50,6 +55,24 @@ public class PlayerHandObj: DeckObj {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func determineFillTexture() {
+        var cardImageName = CardConstants.DeckThreeCardImageName
+        
+        if (self.cards.count == 2) {
+            cardImageName = CardConstants.DeckTwoCardImageName
+        } else if (self.cards.count == 1) {
+            cardImageName = CardConstants.DeckOneCardImageName
+        } else if (self.cards.isEmpty) {
+            cardImageName = CardConstants.DeckNoCardsImageName
+        }
+        
+        self.fillTexture = SKTexture.init(imageNamed: cardImageName)
+    }
+    
+    public func addCardToDeck(card: CardObj) {
+        self.cards.append(card)
     }
 }
 
@@ -102,4 +125,5 @@ public class DeckObj: SKShapeNode {
         
         self.fillTexture = SKTexture.init(imageNamed: cardImageName)
     }
+    
 }

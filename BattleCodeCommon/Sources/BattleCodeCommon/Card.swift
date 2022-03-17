@@ -41,7 +41,7 @@ public class CardObj: SKSpriteNode {
         self.run(sequence)
     }
     
-    public func showBack() {
+    public func showBack(completion block: @escaping () -> Void) {
         let narrow = SKAction.scaleX(to: CGFloat(0), duration: 0.25)
         let widen = SKAction.scaleX(to: CGFloat(1.0), duration: 0.25)
         let addImage = SKAction.run({
@@ -49,11 +49,9 @@ public class CardObj: SKSpriteNode {
             self.hideChildren(hide: true)
         })
         let shrink = SKAction.scale(to: CGFloat(1.0), duration: 0.5)
-        let moveToBottom = SKAction.move(to: CGPoint(x: 0, y: Int(UIScreen.main.bounds.minY) + self.height), duration: 1.0)
+        let moveToBottom = SKAction.move(to: CGPoint(x: 0, y: Int(-UIScreen.main.bounds.height / 2) + self.height/2), duration: 1.0)
         let sequence = SKAction.sequence([shrink, narrow, addImage, widen, moveToBottom])
-        self.run(sequence, completion: ({
-            self.removeFromParent()
-        }))
+        self.run(sequence, completion: block)
     }
 }
 
