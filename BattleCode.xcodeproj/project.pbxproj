@@ -117,7 +117,7 @@
 		6259BDF527DF9395008A8CA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6259BDF627DF9395008A8CA6 /* BattleCode_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BattleCode_macOS.entitlements; sourceTree = "<group>"; };
 		6259BE2A27DFACE6008A8CA6 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
-		89D9A58F27E2901200D6831B /* BattleCodeShared */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = BattleCodeShared; sourceTree = "<group>"; };
+		89D9A58F27E2901200D6831B /* BattleCodeCommon */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = BattleCodeCommon; sourceTree = "<group>"; };
 		89FF137827E0E2350043F059 /* NewGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameViewController.swift; sourceTree = "<group>"; };
 		89FF137927E0E2350043F059 /* NewGameScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewGameScreen.storyboard; sourceTree = "<group>"; };
 		89FF137E27E0EEFA0043F059 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 		6259BDA227DF9390008A8CA6 = {
 			isa = PBXGroup;
 			children = (
-				89D9A58F27E2901200D6831B /* BattleCodeShared */,
+				89D9A58F27E2901200D6831B /* BattleCodeCommon */,
 				6259BDA727DF9390008A8CA6 /* BattleCode Shared */,
 				6259BDB227DF9395008A8CA6 /* BattleCode iOS */,
 				6259BDC427DF9395008A8CA6 /* BattleCode watchOS App */,
@@ -356,7 +356,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1330;
 				TargetAttributes = {
 					6259BDAF27DF9395008A8CA6 = {
 						CreatedOnToolsVersion = 12.4;
@@ -851,6 +851,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "BattleCode macOS/BattleCode_macOS.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = D3GPAVWYTJ;
@@ -874,6 +875,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "BattleCode macOS/BattleCode_macOS.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = D3GPAVWYTJ;
