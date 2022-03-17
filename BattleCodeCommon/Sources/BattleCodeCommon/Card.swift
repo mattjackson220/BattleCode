@@ -57,6 +57,23 @@ public class CardObj: SKSpriteNode {
         self.run(sequence, completion: block)
     }
     
+    public func discard(completion block: @escaping () -> Void) {
+        let narrow = SKAction.scaleX(to: CGFloat(0), duration: 0.25)
+        let widen = SKAction.scaleX(to: CGFloat(1.0), duration: 0.25)
+        let addImage = SKAction.run({
+            self.texture = SKTexture.init(imageNamed: CardConstants.CardBackgroundImageName)
+            self.hideChildren(hide: true)
+        })
+        let shrink = SKAction.scale(to: CGFloat(1.0), duration: 0.5)
+        
+        let newX = -Int(UIScreen.main.bounds.width / 2) + (self.width / 2)
+        let newY = Int(UIScreen.main.bounds.height / 2) - (self.height / 2)
+        let moveToDiscard = SKAction.move(to: CGPoint(x: newX, y: newY), duration: 0.25)
+                                          
+        let sequence = SKAction.sequence([shrink, narrow, addImage, widen, moveToDiscard])
+        self.run(sequence, completion: block)
+    }
+    
     public func showAsSelected() {
         self.texture = SKTexture.init(imageNamed: CardConstants.WhiteImageName)
         self.position = CGPoint(x: 0,y: 0)

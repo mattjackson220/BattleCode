@@ -13,6 +13,7 @@ import BattleCodeCommon
 class GameViewController: UIViewController {
     
     var selectedCard: CardObj?
+    var discard: DiscardObj?
     var playerHand = PlayerHandObj(path: CGMutablePath())
     var showingPlayerHand = false
     var showingDrawnCard = false
@@ -24,6 +25,7 @@ class GameViewController: UIViewController {
         
         let scene = GameScene.newGameScene()
         let deck = createDeck(screenWidth: Int(UIScreen.main.bounds.width), screenHeight: Int(UIScreen.main.bounds.height))
+        self.discard = deck.discard
         scene.addChild(deck)
         scene.addChild(deck.discard)
         let playerHand = createPlayerHand(screenWidth: Int(UIScreen.main.bounds.width), screenHeight: Int(UIScreen.main.bounds.height))
@@ -112,6 +114,15 @@ class GameViewController: UIViewController {
         }
     }
     
+    func addCardToDiscardPile(card: CardObj) {
+        self.selectedCard = nil
+        card.cardLocation = CardConstants.CardLocation.Discard
+        self.discard!.cards.append(card)
+        self.discard!.determineFillTexture()
+        self.inAction = false
+        card.removeFromParent()
+    }
+    
     func addCardToPlayerHand(card: CardObj) {
         self.selectedCard = nil
         self.playerHand.addCardToDeck(card: card)
@@ -180,7 +191,11 @@ class GameViewController: UIViewController {
         switch swipeGesture.direction {
             case .up:
                 self.inAction = true
-                // TODO send to discard pile
+                self.selectedCard?.discard(completion: {
+                    self.addCardToDiscardPile(card: self.selectedCard!)
+                    self.showingDrawnCard = false
+                    self.inAction = false
+                })
                 self.showingDrawnCard = false
                 self.inAction = false
             case .down:

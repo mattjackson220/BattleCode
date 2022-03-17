@@ -13,7 +13,7 @@ public class DiscardObj: SKShapeNode {
     let height = 200
     let width = 100
     
-    var cards = Array<CardObj>()
+    public var cards = Array<CardObj>()
     
     override init() {
         super.init()
