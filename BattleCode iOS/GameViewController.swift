@@ -15,6 +15,7 @@ class GameViewController: UIViewController {
     var selectedCard: CardObj?
     var playerHand = PlayerHandObj(path: CGMutablePath())
     var showingPlayerHand = false
+    var showingDrawnCard = false
     var playerHandIndex = 0
     var inAction = false
     
@@ -83,6 +84,7 @@ class GameViewController: UIViewController {
 
                             card!.showFront(completion: {self.inAction = false})
                             self.selectedCard = card!
+                            self.showingDrawnCard = true;
                         }
                     }
                 }
@@ -103,15 +105,6 @@ class GameViewController: UIViewController {
                             self.showingPlayerHand = true
                         }
                     }
-                }
-            }
-        } else if !showingPlayerHand {
-            scene.enumerateChildNodes(withName: (self.selectedCard?.name)!) { node, _ in
-                self.inAction = true
-                let scaledPath = CGPath(rect: CGRect(x: node.frame.minX, y: node.frame.minY, width: node.frame.width, height: node.frame.height), transform: nil)
-                if scaledPath.contains(touchPosition) {
-                    let card = node as! CardObj
-                    card.showBack(completion: {self.addCardToPlayerHand(card: card)})
                 }
             }
         }
@@ -137,39 +130,66 @@ class GameViewController: UIViewController {
         let scene = (self.view as! SKView).scene!
         
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-            if showingPlayerHand && !self.inAction {
-                self.inAction = true
-                switch swipeGesture.direction {
-                case .right:
-                    self.playerHandIndex = playerHand.getPreviousCardIndex(currentIndex: playerHandIndex)
-                    let newCard = self.playerHand.getCard(index: playerHandIndex, selected: true)
-                    scene.enumerateChildNodes(withName: (self.selectedCard?.name)!) { node, _ in
-                        let oldCard = node as! CardObj
-                        oldCard.returnToLocation(x: 0, y: Int(self.playerHand.frame.minY))
-                        oldCard.removeFromParent()
-                        scene.addChild(newCard)
-                        self.selectedCard = newCard
-                    }
-                case .left:
-                    self.playerHandIndex = playerHand.getNextCardIndex(currentIndex: playerHandIndex)
-                    let newCard = self.playerHand.getCard(index: playerHandIndex, selected: true)
-                    scene.enumerateChildNodes(withName: (self.selectedCard?.name)!) { node, _ in
-                        let oldCard = node as! CardObj
-                        oldCard.returnToLocation(x: 0, y: Int(self.playerHand.frame.minY))
-                        oldCard.removeFromParent()
-                        scene.addChild(newCard)
-                        self.selectedCard = newCard
-                    }
-                case .up:
-                    print("Swiped up")
-                case .down:
-                    self.selectedCard?.showBack(completion: {self.returnCardToPlayerHand(card: self.selectedCard!)})
-                    self.showingPlayerHand = false
-                default:
-                    break
+            if !self.inAction {
+                if showingPlayerHand {
+                    self.handlePlayerHandGesture(scene: scene, swipeGesture: swipeGesture)
+                } else if showingDrawnCard {
+                    self.handleDrawnCardGesture(scene: scene, swipeGesture: swipeGesture)
                 }
-                self.inAction = false
             }
+        }
+    }
+    
+    private func handlePlayerHandGesture(scene: SKScene, swipeGesture: UISwipeGestureRecognizer) {
+        self.inAction = true
+        switch swipeGesture.direction {
+            case .right:
+                self.playerHandIndex = playerHand.getPreviousCardIndex(currentIndex: playerHandIndex)
+                let newCard = self.playerHand.getCard(index: playerHandIndex, selected: true)
+                scene.enumerateChildNodes(withName: (self.selectedCard?.name)!) { node, _ in
+                    let oldCard = node as! CardObj
+                    oldCard.returnToLocation(x: 0, y: Int(self.playerHand.frame.minY))
+                    oldCard.removeFromParent()
+                    scene.addChild(newCard)
+                    self.selectedCard = newCard
+                }
+            case .left:
+                self.playerHandIndex = playerHand.getNextCardIndex(currentIndex: playerHandIndex)
+                let newCard = self.playerHand.getCard(index: playerHandIndex, selected: true)
+                scene.enumerateChildNodes(withName: (self.selectedCard?.name)!) { node, _ in
+                    let oldCard = node as! CardObj
+                    oldCard.returnToLocation(x: 0, y: Int(self.playerHand.frame.minY))
+                    oldCard.removeFromParent()
+                    scene.addChild(newCard)
+                    self.selectedCard = newCard
+                }
+            case .up:
+                print("Swiped up")
+            case .down:
+                self.selectedCard?.showBack(completion: {self.returnCardToPlayerHand(card: self.selectedCard!)})
+                self.showingPlayerHand = false
+            default:
+                break
+        }
+        self.inAction = false
+    }
+    
+    private func handleDrawnCardGesture(scene: SKScene, swipeGesture: UISwipeGestureRecognizer) {
+        switch swipeGesture.direction {
+            case .up:
+                self.inAction = true
+                // TODO send to discard pile
+                self.showingDrawnCard = false
+                self.inAction = false
+            case .down:
+                self.inAction = true
+                self.selectedCard?.showBack(completion: {
+                    self.addCardToPlayerHand(card: self.selectedCard!)
+                    self.showingDrawnCard = false
+                    self.inAction = false
+                })
+            default:
+                break
         }
     }
 }
