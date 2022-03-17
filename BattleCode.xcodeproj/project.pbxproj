@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		621CD54227E38D2000431E30 /* BattleCodeCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 621CD54127E38D2000431E30 /* BattleCodeCommon */; };
 		6259BDB427DF9395008A8CA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259BDB327DF9395008A8CA6 /* AppDelegate.swift */; };
 		6259BDB627DF9395008A8CA6 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259BDB527DF9395008A8CA6 /* GameViewController.swift */; };
 		6259BDB927DF9395008A8CA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6259BDB727DF9395008A8CA6 /* Main.storyboard */; };
@@ -128,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				621CD54227E38D2000431E30 /* BattleCodeCommon in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +157,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		621CD54027E38D2000431E30 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6259BDA227DF9390008A8CA6 = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +175,7 @@
 				6259BDDC27DF9395008A8CA6 /* BattleCode tvOS */,
 				6259BDED27DF9395008A8CA6 /* BattleCode macOS */,
 				6259BDB127DF9395008A8CA6 /* Products */,
+				621CD54027E38D2000431E30 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -256,7 +266,8 @@
 				89D9A59727E385DE00D6831B /* BattleCodeCommon */,
 			);
 			name = Packages;
-			sourceTree = "<group>";
+			path = ../../../../../../../../Desktop/BattleCode/BattleCode;
+			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		89FF137D27E0E2950043F059 /* New Game */ = {
 			isa = PBXGroup;
@@ -285,6 +296,9 @@
 				6259BDC327DF9395008A8CA6 /* PBXTargetDependency */,
 			);
 			name = "BattleCode iOS";
+			packageProductDependencies = (
+				621CD54127E38D2000431E30 /* BattleCodeCommon */,
+			);
 			productName = "BattleCode iOS";
 			productReference = 6259BDB027DF9395008A8CA6 /* BattleCode.app */;
 			productType = "com.apple.product-type.application";
@@ -959,6 +973,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		621CD54127E38D2000431E30 /* BattleCodeCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BattleCodeCommon;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6259BDA327DF9390008A8CA6 /* Project object */;
 }

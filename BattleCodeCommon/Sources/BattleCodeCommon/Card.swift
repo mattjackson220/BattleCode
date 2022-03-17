@@ -1,27 +1,12 @@
 //
-//  GameObjects.swift
-//  BattleCode iOS
+//  Card.swift
+//  
 //
-//  Created by Matt Jackson on 3/15/22.
+//  Created by Matt Jackson on 3/17/22.
 //
 
 import Foundation
 import SpriteKit
-
-public struct CardConstants {
-    static public let TitleName = "cardTitle"
-    static public let DecriptionName = "cardDesc"
-    static public let CardBackgroundImageName = "cardBackgroundImage"
-    static public let WhiteImageName = "whiteSquare"
-    static public let FontName = "Chalkduster"
-    
-    static public let DeckThreeCardImageName = "threeCardDeck"
-    static public let DeckTwoCardImageName = "twoCardDeck"
-    static public let DeckOneCardImageName = "singleCardDeck"
-    static public let DeckNoCardsImageName = "noCardsLeft"
-    
-    static public let DeckName = "deck"
-}
 
 public class CardObj: SKSpriteNode {
     public var height = 0
@@ -64,14 +49,15 @@ public class CardObj: SKSpriteNode {
             self.hideChildren(hide: true)
         })
         let shrink = SKAction.scale(to: CGFloat(1.0), duration: 0.5)
-        let sequence = SKAction.sequence([shrink, narrow, addImage, widen])
+        let moveToBottom = SKAction.move(to: CGPoint(x: 0, y: Int(UIScreen.main.bounds.minY) + self.height), duration: 1.0)
+        let sequence = SKAction.sequence([shrink, narrow, addImage, widen, moveToBottom])
         self.run(sequence, completion: ({
             self.removeFromParent()
         }))
     }
 }
 
-private func createCard(cardId: String, cardTitle: String, cardDescription: String, deck: DeckObj) -> CardObj {
+public func createCard(cardId: String, cardTitle: String, cardDescription: String, deck: DeckObj) -> CardObj {
     let card = CardObj(texture: SKTexture(imageNamed: CardConstants.CardBackgroundImageName),
                        size: CGSize(width: CGFloat(deck.width), height: CGFloat(deck.height)))
     card.name = cardId
@@ -107,73 +93,4 @@ private func createCard(cardId: String, cardTitle: String, cardDescription: Stri
     card.addChild(cardDescription)
         
     return card
-}
-
-public func createDeck(screenWidth: Int, screenHeight: Int) -> DeckObj {
-    let deck = DeckObj()
-    let path = CGMutablePath()
-    
-    let startingX = (screenWidth / 2) - deck.width
-    let startingY = (screenHeight / 2) - deck.height
-    path.addRect(CGRect(x: startingX, y: startingY, width: deck.width, height: deck.height))
-    
-    deck.path = path
-    deck.strokeColor = .clear
-    deck.fillColor = .white
-    for cardInfo in getCardInfos() {
-        deck.cards.append(createCard(cardId: cardInfo.cardId, cardTitle: cardInfo.cardTitle, cardDescription: cardInfo.cardDescription, deck: deck))
-    }
-    deck.reshuffleDeck()
-    return deck;
-}
-
-public class DeckObj: SKShapeNode {
-    
-    let height = 200
-    let width = 100
-    
-    var cards = Array<CardObj>()
-    var discard = Array<CardObj>()
-    
-    override init() {
-        super.init()
-        self.name = CardConstants.DeckName
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    public func getTopCard() -> CardObj? {
-        if self.cards.count == 0 {
-            self.reshuffleDeck()
-        }
-        if self.cards.count == 0 {
-            return nil
-        }
-        let card = self.cards[0]
-        self.cards.remove(at: 0)
-        self.determineFillTexture()
-        return card
-    }
-    
-    public func reshuffleDeck() {
-        self.cards.append(contentsOf: self.discard)
-        self.cards.shuffle()
-        self.determineFillTexture()
-    }
-    
-    private func determineFillTexture() {
-        var cardImageName = CardConstants.DeckThreeCardImageName
-        
-        if (self.cards.count == 2) {
-            cardImageName = CardConstants.DeckTwoCardImageName
-        } else if (self.cards.count == 1) {
-            cardImageName = CardConstants.DeckOneCardImageName
-        } else if (self.cards.isEmpty) {
-            cardImageName = CardConstants.DeckNoCardsImageName
-        }
-        
-        self.fillTexture = SKTexture.init(imageNamed: cardImageName)
-    }
 }

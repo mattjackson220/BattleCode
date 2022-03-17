@@ -20,6 +20,7 @@ class GameViewController: UIViewController {
         
         let scene = GameScene.newGameScene()
         scene.addChild(createDeck(screenWidth: Int(UIScreen.main.bounds.width), screenHeight: Int(UIScreen.main.bounds.height)))
+        scene.addChild(createPlayerHand(screenWidth: Int(UIScreen.main.bounds.width), screenHeight: Int(UIScreen.main.bounds.height)))
 
         // Present the scene
         let skView = self.view as! SKView
