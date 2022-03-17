@@ -83,6 +83,7 @@ public class CardObj: SKSpriteNode {
 
 }
 
+@available(iOS 11.0, *)
 public func createCard(cardId: String, cardTitle: String, cardDescription: String, deck: DeckObj) -> CardObj {
     let card = CardObj(texture: SKTexture(imageNamed: CardConstants.CardBackgroundImageName),
                        size: CGSize(width: CGFloat(deck.width), height: CGFloat(deck.height)))
@@ -99,6 +100,8 @@ public func createCard(cardId: String, cardTitle: String, cardDescription: Strin
     card.color = .white
     
     let cardLabel = SKLabelNode(fontNamed: CardConstants.FontName)
+    cardLabel.numberOfLines = 2
+    cardLabel.preferredMaxLayoutWidth = CGFloat(card.width - 10)
     cardLabel.text = card.cardTitle
     cardLabel.name = CardConstants.TitleName
     cardLabel.fontSize = 10
@@ -109,6 +112,8 @@ public func createCard(cardId: String, cardTitle: String, cardDescription: Strin
     card.addChild(cardLabel)
     
     let cardDescription = SKLabelNode(fontNamed: CardConstants.FontName)
+    cardDescription.numberOfLines = 10
+    cardDescription.preferredMaxLayoutWidth = CGFloat(card.width - 10)
     cardDescription.text = card.cardDescription
     cardDescription.name = CardConstants.DecriptionName
     cardDescription.fontSize = 5
