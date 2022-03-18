@@ -124,10 +124,9 @@ class GameViewController: UIViewController {
         card.returnToLocation(x: (Int(UIScreen.main.bounds.width) / 2) - card.width, y: Int(UIScreen.main.bounds.height / 2) - card.height)
     }
     
-    // TODO something is weird here... after discard reloads then it cant add to player hand
     func addCardToPlayerHand(card: CardObj) {
         self.selectedCard = nil
-        self.playerHand.addCardToDeck(card: card)
+        self.playerHand.addCardToHand(card: card)
         self.playerHand.determineFillTexture()
         card.cardLocation = CardConstants.CardLocation.PlayerHand
         self.inAction = false
@@ -159,24 +158,28 @@ class GameViewController: UIViewController {
         self.inAction = true
         switch swipeGesture.direction {
             case .right:
-                self.playerHandIndex = playerHand.getPreviousCardIndex(currentIndex: playerHandIndex)
-                let newCard = self.playerHand.getCard(index: playerHandIndex, selected: true)
-                scene.enumerateChildNodes(withName: (self.selectedCard?.name)!) { node, _ in
-                    let oldCard = node as! CardObj
-                    oldCard.returnToLocation(x: 0, y: Int(self.playerHand.frame.minY))
-                    oldCard.removeFromParent()
-                    scene.addChild(newCard)
-                    self.selectedCard = newCard
+                if self.playerHand.getCardCount() > 1 {
+                    self.playerHandIndex = playerHand.getPreviousCardIndex(currentIndex: playerHandIndex)
+                    let newCard = self.playerHand.getCard(index: playerHandIndex, selected: true)
+                    scene.enumerateChildNodes(withName: (self.selectedCard?.name)!) { node, _ in
+                        let oldCard = node as! CardObj
+                        oldCard.returnToLocation(x: 0, y: Int(self.playerHand.frame.minY))
+                        oldCard.removeFromParent()
+                        scene.addChild(newCard)
+                        self.selectedCard = newCard
+                    }
                 }
             case .left:
-                self.playerHandIndex = playerHand.getNextCardIndex(currentIndex: playerHandIndex)
-                let newCard = self.playerHand.getCard(index: playerHandIndex, selected: true)
-                scene.enumerateChildNodes(withName: (self.selectedCard?.name)!) { node, _ in
-                    let oldCard = node as! CardObj
-                    oldCard.returnToLocation(x: 0, y: Int(self.playerHand.frame.minY))
-                    oldCard.removeFromParent()
-                    scene.addChild(newCard)
-                    self.selectedCard = newCard
+                if self.playerHand.getCardCount() > 1 {
+                    self.playerHandIndex = playerHand.getNextCardIndex(currentIndex: playerHandIndex)
+                    let newCard = self.playerHand.getCard(index: playerHandIndex, selected: true)
+                    scene.enumerateChildNodes(withName: (self.selectedCard?.name)!) { node, _ in
+                        let oldCard = node as! CardObj
+                        oldCard.returnToLocation(x: 0, y: Int(self.playerHand.frame.minY))
+                        oldCard.removeFromParent()
+                        scene.addChild(newCard)
+                        self.selectedCard = newCard
+                    }
                 }
             case .up:
                 self.inAction = true
@@ -185,7 +188,7 @@ class GameViewController: UIViewController {
                     self.playerHand.removeCard(index: self.playerHandIndex)
                     self.playerHand.determineFillTexture()
                     self.playerHandIndex = 0
-                    self.showingDrawnCard = false
+                    self.showingPlayerHand = false
                     self.inAction = false
                 })
             case .down:

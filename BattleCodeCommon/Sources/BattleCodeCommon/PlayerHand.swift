@@ -53,7 +53,7 @@ public class PlayerHandObj: SKShapeNode {
         self.fillTexture = SKTexture.init(imageNamed: cardImageName)
     }
     
-    public func addCardToDeck(card: CardObj) {
+    public func addCardToHand(card: CardObj) {
         self.cards.append(card)
     }
     
@@ -92,5 +92,9 @@ public class PlayerHandObj: SKShapeNode {
     
     public func removeCard(index: Int) {
         self.cards.remove(at: index)
+    }
+    
+    public func getCardCount() -> Int {
+        return self.cards.count
     }
 }
