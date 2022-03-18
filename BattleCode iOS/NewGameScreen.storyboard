@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--New Game View Controller-->
+        <!--Base View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="NewGameStoryboard" id="Y6W-OH-hqX" customClass="NewGameViewController" customModule="BattleCode" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewGameStoryboard" id="Y6W-OH-hqX" customClass="BaseViewController" customModule="BattleCode" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,6 +31,9 @@
                                         </fragment>
                                     </attributedString>
                                 </buttonConfiguration>
+                                <connections>
+                                    <segue destination="dyi-UC-FzV" kind="presentation" modalPresentationStyle="fullScreen" id="iiR-vM-YHx"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="peP-eI-dxL">
                                 <rect key="frame" x="28" y="199" width="358" height="100"/>
@@ -48,7 +51,7 @@
                                     </attributedString>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="dyi-UC-FzV" kind="presentation" modalPresentationStyle="fullScreen" id="4kh-cO-Sk8"/>
+                                    <segue destination="qyN-Rx-IRl" kind="presentation" modalPresentationStyle="fullScreen" id="ZnL-Os-TGA"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -74,7 +77,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3BK-0z-oxL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1091" y="-377"/>
+            <point key="canvasLocation" x="1154" y="492"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="uKM-RG-pSX">
+            <objects>
+                <viewController id="qyN-Rx-IRl" customClass="GameViewController" customModule="BattleCode" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uyo-tH-OPe" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="E40-Eb-64E"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="N00-Ee-Kt5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2xt-Au-gwX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1154" y="-246"/>
         </scene>
     </scenes>
     <resources>
