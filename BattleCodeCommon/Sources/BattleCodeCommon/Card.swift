@@ -74,6 +74,39 @@ public class CardObj: SKSpriteNode {
         self.run(sequence, completion: block)
     }
     
+    public func swipeOffScreen(direction: UISwipeGestureRecognizer.Direction, completion block: @escaping () -> Void) {
+        var directionMod = 1
+        if direction == .left {
+            directionMod = -1
+        }
+        let move = SKAction.moveBy(x: CGFloat(directionMod) * (UIScreen.main.bounds.width + CGFloat(self.width)), y: 0, duration: 0.5)
+        self.run(move, completion: block)
+    }
+    
+    public func swipeOnScreen(direction: UISwipeGestureRecognizer.Direction) {
+        var directionMod = -1
+        if direction == .left {
+            directionMod = 1
+        }
+        
+        self.position = CGPoint(x: CGFloat(directionMod) * (UIScreen.main.bounds.width + CGFloat(self.width)), y: 0)
+
+        let move = SKAction.moveTo(x: CGFloat(0), duration: 0.5)
+        self.run(move)
+    }
+    
+    public func wiggleCard(direction: UISwipeGestureRecognizer.Direction) {
+        var directionMod = 1
+        if direction == .left {
+            directionMod = -1
+        }
+        
+        let moveOut = SKAction.moveTo(x: CGFloat(directionMod) * CGFloat(self.width), duration: 0.25)
+        let moveBack = SKAction.moveTo(x: CGFloat(0), duration: 0.25)
+        let sequence = SKAction.sequence([moveOut, moveBack])
+        self.run(sequence)
+    }
+    
     public func showAsSelected() {
         self.texture = SKTexture.init(imageNamed: CardConstants.WhiteImageName)
         self.position = CGPoint(x: 0,y: 0)

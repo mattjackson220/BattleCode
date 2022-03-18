@@ -163,10 +163,18 @@ class GameViewController: UIViewController {
                     let newCard = self.playerHand.getCard(index: playerHandIndex, selected: true)
                     scene.enumerateChildNodes(withName: (self.selectedCard?.name)!) { node, _ in
                         let oldCard = node as! CardObj
-                        oldCard.returnToLocation(x: 0, y: Int(self.playerHand.frame.minY))
-                        oldCard.removeFromParent()
+                        oldCard.swipeOffScreen(direction: .right, completion: {
+                            oldCard.returnToLocation(x: 0, y: Int(self.playerHand.frame.minY))
+                            oldCard.removeFromParent()
+                        })
                         scene.addChild(newCard)
                         self.selectedCard = newCard
+                        newCard.swipeOnScreen(direction: .right)
+                    }
+                } else if self.playerHand.getCardCount() == 1 {
+                    scene.enumerateChildNodes(withName: (self.selectedCard?.name)!) { node, _ in
+                        let oldCard = node as! CardObj
+                        oldCard.wiggleCard(direction: .right)
                     }
                 }
             case .left:
@@ -175,12 +183,21 @@ class GameViewController: UIViewController {
                     let newCard = self.playerHand.getCard(index: playerHandIndex, selected: true)
                     scene.enumerateChildNodes(withName: (self.selectedCard?.name)!) { node, _ in
                         let oldCard = node as! CardObj
-                        oldCard.returnToLocation(x: 0, y: Int(self.playerHand.frame.minY))
-                        oldCard.removeFromParent()
+                        oldCard.swipeOffScreen(direction: .left, completion: {
+                            oldCard.returnToLocation(x: 0, y: Int(self.playerHand.frame.minY))
+                            oldCard.removeFromParent()
+                        })
                         scene.addChild(newCard)
                         self.selectedCard = newCard
+                        newCard.swipeOnScreen(direction: .left)
                     }
-                }
+                } else if self.playerHand.getCardCount() == 1 {
+                   scene.enumerateChildNodes(withName: (self.selectedCard?.name)!) { node, _ in
+                       let oldCard = node as! CardObj
+                       oldCard.wiggleCard(direction: .left)
+                   }
+               }
+
             case .up:
                 self.inAction = true
                 self.selectedCard?.discard(completion: {
