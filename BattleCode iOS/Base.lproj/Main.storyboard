@@ -41,7 +41,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="6QP-7G-5cs" kind="show" id="MVh-lz-Xjq"/>
+                                    <segue destination="6QP-7G-5cs" kind="presentation" modalPresentationStyle="fullScreen" id="MVh-lz-Xjq"/>
                                 </connections>
                             </button>
                         </subviews>

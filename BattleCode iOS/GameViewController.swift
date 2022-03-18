@@ -16,7 +16,11 @@ class GameViewController: UIViewController {
     @IBAction func settingsButtonClick(_ sender: Any) {
         let alert = UIAlertController(title:"Options", message: "Please select an option below:", preferredStyle: UIAlertController.Style.alert)
         
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Back", style: UIAlertAction.Style.default, handler: {(action) -> Void in
+            let mainMenuViewController = self.storyboard!.instantiateViewController(withIdentifier: "mainMenuViewController") as! BaseViewController
+            mainMenuViewController.modalPresentationStyle = .fullScreen
+            self.present(mainMenuViewController, animated: true, completion: nil)
+        }))
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
         
