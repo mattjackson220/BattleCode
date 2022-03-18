@@ -79,10 +79,10 @@
             </objects>
             <point key="canvasLocation" x="1154" y="492"/>
         </scene>
-        <!--Game View Controller-->
+        <!--Tutorial View Controller-->
         <scene sceneID="uKM-RG-pSX">
             <objects>
-                <viewController id="qyN-Rx-IRl" customClass="GameViewController" customModule="BattleCode" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qyN-Rx-IRl" customClass="TutorialViewController" customModule="BattleCode" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uyo-tH-OPe" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
