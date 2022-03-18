@@ -6,7 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 class TutorialViewController: GameViewController {
-
+    @IBOutlet weak var tutorialSettingsButton: UIButton!
+    @IBAction func tutorialSettingsButtonClick(_ sender: Any) {
+        super.settingsButtonClick(sender)
+    }
 }

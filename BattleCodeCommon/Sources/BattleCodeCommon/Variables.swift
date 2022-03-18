@@ -34,3 +34,8 @@ public struct DeckConstants {
     static public let DeckName = "deck"
     static public let DiscardName = "discard"
 }
+
+public struct GeneralConstants {
+    static public let GreenGearImage = "greenGear"
+    static public let GreenOnGreyGearImage = "greenGearOnDarkGrey"
+}

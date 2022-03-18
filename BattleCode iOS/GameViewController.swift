@@ -12,6 +12,16 @@ import BattleCodeCommon
 
 class GameViewController: UIViewController {
     
+    @IBOutlet weak var settingsButton: UIButton!
+    @IBAction func settingsButtonClick(_ sender: Any) {
+        let alert = UIAlertController(title:"Options", message: "Please select an option below:", preferredStyle: UIAlertController.Style.alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
     var selectedCard: CardObj?
     var discard: DiscardObj?
     var playerHand = PlayerHandObj(path: CGMutablePath())
@@ -19,11 +29,12 @@ class GameViewController: UIViewController {
     var showingDrawnCard = false
     var playerHandIndex = 0
     var inAction = false
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         let scene = GameScene.newGameScene()
+        
         let deck = createDeck(screenWidth: Int(UIScreen.main.bounds.width), screenHeight: Int(UIScreen.main.bounds.height))
         self.discard = deck.discard
         scene.addChild(deck)
